@@ -1,105 +1,14 @@
 @font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 100;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHeem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 100;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHeem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDAvHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 200;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDAvHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDDxHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDDxHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCdHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCdHOem.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBxG-em.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBxG-em.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBIG-em.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'Material Symbols Outlined';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzazHD_dY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBIG-em.ttf") format('truetype');
+  font-display: block;
+  src: url("./kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOem.ttf") format("truetype");
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
+  font-family: "Material Symbols Outlined";
+  font-weight: 400;
   font-style: normal;
   font-size: 24px;
   line-height: 1;
@@ -109,4 +18,6 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  font-feature-settings: "liga";
+  vertical-align: middle;
 }

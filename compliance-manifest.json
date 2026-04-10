@@ -43,10 +43,10 @@
       {
         "name": "Tailwind CDN",
         "category": "necessary",
-        "enabled": true,
+        "enabled": false,
         "processor": "Tailwind Labs",
-        "transfer_outside_eea": true,
-        "notes": "Se carga el script desde cdn.tailwindcss.com"
+        "transfer_outside_eea": false,
+        "notes": "Desactivado en produccion actual: script de Tailwind autoalojado en local"
       },
       {
         "name": "Google Hosted Images",
@@ -69,15 +69,7 @@
     "terms_and_conditions": true,
     "withdrawal_policy": false
   },
-  "processors": [
-    {
-      "name": "Tailwind Labs",
-      "role": "frontend_cdn",
-      "country": "US",
-      "transfer_outside_eea": true,
-      "safeguard": "Pendiente de confirmar si el CDN se mantendra en produccion"
-    }
-  ],
+  "processors": [],
   "retention_rules": [],
-  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal a fecha de 2026-04-10. Fuentes e imagenes externas de Google se han sustituido por recursos locales. Sigue pendiente confirmar si Tailwind CDN se mantendra en produccion."
+  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal a fecha de 2026-04-10. Fuentes, imagenes y script de Tailwind se sirven en local."
 }

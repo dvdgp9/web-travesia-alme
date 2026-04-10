@@ -57,10 +57,11 @@ module.exports = {
         "primary-fixed-dim": "#80d1f2"
       },
       borderRadius: {
-        DEFAULT: "0.125rem",
-        lg: "0.25rem",
-        xl: "0.5rem",
-        full: "0.75rem"
+        DEFAULT: "0.75rem",
+        lg: "1rem",
+        xl: "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "2rem"
       },
       fontFamily: {
         headline: ["Lexend", "sans-serif"],

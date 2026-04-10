@@ -9,6 +9,7 @@
 <link href="./assets/fonts/fonts.css" rel="stylesheet">
 <link href="./assets/fonts/material-symbols.css" rel="stylesheet">
 <style>
+        html { scroll-behavior: smooth; }
         body { font-family: 'Manrope', sans-serif; }
         h1, h2, h3, .font-headline { font-family: 'Lexend', sans-serif; }
         .glass-panel {
@@ -25,46 +26,127 @@
             background: rgba(15, 23, 42, 0.55);
             z-index: 100;
         }
+        /* Scroll-triggered fade-in */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Stagger children */
+        .stagger-children > .fade-up:nth-child(1) { transition-delay: 0ms; }
+        .stagger-children > .fade-up:nth-child(2) { transition-delay: 80ms; }
+        .stagger-children > .fade-up:nth-child(3) { transition-delay: 160ms; }
+        .stagger-children > .fade-up:nth-child(4) { transition-delay: 240ms; }
+        .stagger-children > .fade-up:nth-child(5) { transition-delay: 320ms; }
+        /* Mobile menu */
+        .mobile-nav { transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); }
+        .mobile-nav.open { transform: translateX(0); }
+        /* Nav scroll state */
+        nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
+        /* Race card number accent */
+        .race-card { position: relative; overflow: hidden; }
+        .race-card::before {
+            content: attr(data-race-num);
+            position: absolute;
+            top: -12px;
+            right: -8px;
+            font-size: 7rem;
+            font-weight: 900;
+            font-family: 'Lexend', sans-serif;
+            line-height: 1;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        /* Hover lift for cards */
+        .hover-lift { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease; }
+        .hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,88,111,0.12); }
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 90;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
-<div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
-<div class="text-2xl font-black text-cyan-900 dark:text-cyan-50 italic font-['Lexend'] tracking-tight" style="">
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md" id="main-nav">
+<div class="flex justify-between items-center px-6 md:px-8 h-16 md:h-20 max-w-7xl mx-auto">
+<a href="#" class="text-xl md:text-2xl font-black text-primary italic font-headline tracking-tight">
                 ALMERÍA TRAVESÍAS
-            </div>
-<div class="hidden md:flex items-center gap-8 font-['Lexend'] tracking-tight">
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-200 transition-colors" href="#calendar" style="">Calendario</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-200 transition-colors" href="#info" style="">Info</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-200 transition-colors" href="#categories" style="">Categorías</a>
+            </a>
+<div class="hidden md:flex items-center gap-8 font-headline text-sm tracking-tight">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#calendar">Calendario</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#info">Info</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#categories">Categorías</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#schedule">Horarios</a>
 </div>
-<a class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold hover:opacity-80 transition-all active:scale-95 duration-200" href="#registration" style="">Registrarse<br></a>
+<div class="flex items-center gap-3">
+<a class="hidden md:inline-flex bg-primary text-on-primary px-6 py-2.5 rounded-full font-bold text-sm hover:bg-primary-container transition-all active:scale-95 duration-200" href="#registration">Inscribirse</a>
+<button class="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container transition-colors" id="burger-btn" aria-label="Abrir menú">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
 </div>
 </nav>
+<!-- Mobile slide-over menu -->
+<div class="fixed inset-0 z-[60] pointer-events-none" id="mobile-overlay">
+<div class="absolute inset-0 bg-slate-900/50 opacity-0 transition-opacity duration-300 pointer-events-none" id="mobile-backdrop"></div>
+<div class="mobile-nav absolute top-0 right-0 h-full w-72 bg-white shadow-2xl pointer-events-auto flex flex-col" id="mobile-menu">
+<div class="flex items-center justify-between px-6 h-16 border-b border-outline-variant/30">
+<span class="font-headline font-bold text-primary">Menú</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" id="close-menu-btn" aria-label="Cerrar menú">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 p-4 font-headline">
+<a class="px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#calendar" data-mobile-link>Calendario</a>
+<a class="px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#info" data-mobile-link>Info</a>
+<a class="px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#categories" data-mobile-link>Categorías</a>
+<a class="px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors" href="#schedule" data-mobile-link>Horarios</a>
+</div>
+<div class="mt-auto p-4">
+<a class="block text-center bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-sm hover:bg-primary-container transition-all" href="#registration" data-mobile-link>Inscribirse</a>
+</div>
+</div>
+</div>
 <!-- Hero Section -->
 <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="dynamic low angle shot of open water swimmers starting a race with sun reflecting on the Mediterranean sea waves" src="./assets/images/hero-swimmers.jpg" style="">
+<img class="w-full h-full object-cover" data-alt="dynamic low angle shot of open water swimmers starting a race with sun reflecting on the Mediterranean sea waves" src="./assets/images/hero-swimmers.jpg">
 <div class="absolute inset-0 bg-gradient-to-tr from-primary/90 via-primary-container/40 to-transparent"></div>
 </div>
 <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
 <div class="max-w-3xl">
-<span class="inline-block px-4 py-1.5 bg-tertiary-container text-on-tertiary-container rounded-full text-sm font-bold tracking-widest uppercase mb-6" style="">
-                    Temporada 2026<br></span>
-<h1 class="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter italic mb-6" style="">
+<span class="inline-block px-4 py-1.5 bg-tertiary-container text-on-tertiary-container rounded-full text-sm font-bold tracking-widest uppercase mb-6">
+                    Temporada 2026</span>
+<h1 class="text-5xl md:text-8xl font-black text-white leading-none tracking-tighter italic mb-6">
                     CIRCUITO PROVINCIAL DE <br>
-<span class="text-secondary-container" style="">TRAVESÍAS A NADO</span>
+<span class="text-secondary-container">TRAVESÍAS A NADO</span>
 </h1>
-<p class="text-xl md:text-2xl text-white/90 font-medium mb-10 flex items-center gap-3" style="">
-<span class="material-symbols-outlined text-secondary-fixed" style="">waves</span>
+<p class="text-xl md:text-2xl text-white/90 font-medium mb-10 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed">waves</span>
                     Organiza: Diputación de Almería
                 </p>
 <div class="flex flex-wrap gap-4">
-<a class="bg-primary-container text-white px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-primary/40 transition-all active:scale-95" href="#calendar" style="">
+<a class="bg-primary-container text-white px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-primary/40 transition-all active:scale-95" href="#calendar">
                         Ver Calendario
                     </a>
-<a class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all active:scale-95" href="#registration" style="">
+<a class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-white/20 transition-all active:scale-95" href="#registration">
                         Inscribirse Ahora
                     </a>
 </div>
@@ -77,46 +159,62 @@
 <div class="max-w-7xl mx-auto px-8">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
 <div>
-<h2 class="text-4xl md:text-5xl font-black text-primary italic leading-none mb-4" style="">CALENDARIO OFICIAL</h2>
-<p class="text-on-surface-variant font-medium" style="">Cuatro pruebas icónicas a lo largo de la costa de Almería.</p>
+<h2 class="text-4xl md:text-5xl font-black text-primary italic leading-none mb-4">CALENDARIO OFICIAL</h2>
+<p class="text-on-surface-variant font-medium">Cuatro pruebas icónicas a lo largo de la costa de Almería.</p>
 </div>
 <div class="hidden md:block h-px flex-1 mx-12 bg-outline-variant/30"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
 <!-- Race 1 -->
-<div class="group bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary hover:shadow-xl transition-all duration-300">
-<div class="text-sm font-bold text-primary-container mb-2" style="">11 JULIO 2026</div>
-<h3 class="text-2xl font-black text-on-surface mb-6 uppercase tracking-tight" style="">Balanegra</h3>
+<div class="race-card hover-lift fade-up group bg-surface-container-lowest p-8 rounded-2xl shadow-sm border-l-4 border-primary" data-race-num="01">
+<div class="text-sm font-bold text-primary-container mb-2">11 JULIO 2026</div>
+<h3 class="text-2xl font-black text-on-surface mb-4 uppercase tracking-tight">Balanegra</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<span class="text-sm font-semibold">Playa de Balanegra</span>
+</div>
 <div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl" style="">location_on</span>
-<span class="text-sm font-semibold" style="">Playa de Balanegra</span>
+<span class="material-symbols-outlined text-primary text-xl">pool</span>
+<span class="text-sm font-semibold">1500 m / 500 m</span>
 </div>
 </div>
 <!-- Race 2 -->
-<div class="group bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-tertiary hover:shadow-xl transition-all duration-300">
-<div class="text-sm font-bold text-tertiary mb-2" style="">25 JULIO 2026</div>
-<h3 class="text-2xl font-black text-on-surface mb-6 uppercase tracking-tight" style="">Cuevas de Almanzora</h3>
+<div class="race-card hover-lift fade-up group bg-surface-container-lowest p-8 rounded-2xl shadow-sm border-l-4 border-tertiary" data-race-num="02">
+<div class="text-sm font-bold text-tertiary mb-2">25 JULIO 2026</div>
+<h3 class="text-2xl font-black text-on-surface mb-4 uppercase tracking-tight">Cuevas de Almanzora</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-tertiary text-xl">location_on</span>
+<span class="text-sm font-semibold">Canal de Remo</span>
+</div>
 <div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-tertiary text-xl" style="">location_on</span>
-<span class="text-sm font-semibold" style="">Canal de Remo</span>
+<span class="material-symbols-outlined text-tertiary text-xl">pool</span>
+<span class="text-sm font-semibold">1500 m / 500 m</span>
 </div>
 </div>
 <!-- Race 3 -->
-<div class="group bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-primary hover:shadow-xl transition-all duration-300">
-<div class="text-sm font-bold text-primary-container mb-2" style="">01 AGOSTO 2026</div>
-<h3 class="text-2xl font-black text-on-surface mb-6 uppercase tracking-tight" style="">Garrucha</h3>
+<div class="race-card hover-lift fade-up group bg-surface-container-lowest p-8 rounded-2xl shadow-sm border-l-4 border-primary" data-race-num="03">
+<div class="text-sm font-bold text-primary-container mb-2">01 AGOSTO 2026</div>
+<h3 class="text-2xl font-black text-on-surface mb-4 uppercase tracking-tight">Garrucha</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<span class="text-sm font-semibold">Puerto de Garrucha</span>
+</div>
 <div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-primary text-xl" style="">location_on</span>
-<span class="text-sm font-semibold" style="">Puerto de Garrucha</span>
+<span class="material-symbols-outlined text-primary text-xl">pool</span>
+<span class="text-sm font-semibold">1500 m / 500 m</span>
 </div>
 </div>
 <!-- Race 4 -->
-<div class="group bg-surface-container-lowest p-8 rounded-xl shadow-sm border-l-4 border-tertiary hover:shadow-xl transition-all duration-300">
-<div class="text-sm font-bold text-tertiary mb-2" style="">22 AGOSTO 2026</div>
-<h3 class="text-2xl font-black text-on-surface mb-6 uppercase tracking-tight" style="">Almería</h3>
+<div class="race-card hover-lift fade-up group bg-surface-container-lowest p-8 rounded-2xl shadow-sm border-l-4 border-tertiary" data-race-num="04">
+<div class="text-sm font-bold text-tertiary mb-2">22 AGOSTO 2026</div>
+<h3 class="text-2xl font-black text-on-surface mb-4 uppercase tracking-tight">Almería</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-tertiary text-xl">location_on</span>
+<span class="text-sm font-semibold">Playa de las Palmeras</span>
+</div>
 <div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined text-tertiary text-xl" style="">location_on</span>
-<span class="text-sm font-semibold" style="">Playa de las Palmeras</span>
+<span class="material-symbols-outlined text-tertiary text-xl">pool</span>
+<span class="text-sm font-semibold">1500 m / 500 m</span>
 </div>
 </div>
 </div>
@@ -128,26 +226,26 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 <!-- Text Block -->
 <div class="lg:col-span-5 flex flex-col justify-center">
-<h2 class="text-4xl md:text-5xl font-black text-on-surface italic leading-tight mb-8" style="">REQUISITOS Y <br><span class="text-primary-container" style="">DISTANCIAS</span></h2>
+<h2 class="text-4xl md:text-5xl font-black text-on-surface italic leading-tight mb-8 fade-up">REQUISITOS Y <br><span class="text-primary-container">DISTANCIAS</span></h2>
 <div class="space-y-6">
 <div class="bg-surface p-6 rounded-xl">
-<h4 class="font-bold text-primary mb-2 flex items-center gap-2" style="">
-<span class="material-symbols-outlined" style="">straighten</span> Distancias Oficiales
+<h4 class="font-bold text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">straighten</span> Distancias Oficiales
                                 </h4>
 <ul class="space-y-2 text-on-surface-variant">
-<li class="flex justify-between" style=""><span class="" style="">Prueba General:</span> <span class="font-bold" style="">1500 m</span></li>
-<li class="flex justify-between" style=""><span class="" style="">Prueba Infantil:</span> <span class="font-bold" style="">500 m</span></li>
+<li class="flex justify-between"><span>Prueba General:</span> <span class="font-bold">1500 m</span></li>
+<li class="flex justify-between"><span>Prueba Infantil:</span> <span class="font-bold">500 m</span></li>
 </ul>
 </div>
 <div class="bg-surface p-6 rounded-xl">
-<h4 class="font-bold text-primary mb-2 flex items-center gap-2" style="">
-<span class="material-symbols-outlined" style="">inventory_2</span> Equipamiento Obligatorio
+<h4 class="font-bold text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">inventory_2</span> Equipamiento Obligatorio
                                 </h4>
-<p class="text-on-surface-variant text-sm" style="">Se entregará en cada prueba:</p>
+<p class="text-on-surface-variant text-sm">Se entregará en cada prueba:</p>
 <div class="flex gap-4 mt-3">
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold" style="">GORRO OFICIAL</span>
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold" style="">CHIP</span>
-<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold" style="">DORSAL</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">GORRO OFICIAL</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">CHIP</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">DORSAL</span>
 </div>
 </div>
 </div>
@@ -155,15 +253,16 @@
 <!-- Visual/Featured Block -->
 <div class="lg:col-span-7 grid grid-cols-2 gap-4">
 <div class="col-span-2 relative h-64 rounded-2xl overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="crystal clear turquoise water of a Mediterranean cove with swimmers in the distance" src="./assets/images/cove-swimmers.jpg" style="">
+<img class="w-full h-full object-cover" data-alt="crystal clear turquoise water of a Mediterranean cove with swimmers in the distance" src="./assets/images/cove-swimmers.jpg">
 <div class="absolute inset-0 bg-primary/20"></div>
 </div>
 <div class="relative rounded-2xl overflow-hidden h-48 bg-primary p-8 flex flex-col justify-end">
-<h4 class="text-white font-black text-xl leading-tight" style="">SEGURIDAD GARANTIZADA</h4>
-<p class="text-white/70 text-xs mt-2 uppercase tracking-widest" style="">Servicio médico y vigilancia</p>
+<span class="material-symbols-outlined text-white/80 text-3xl mb-3">health_and_safety</span>
+<h4 class="text-white font-black text-xl leading-tight">SEGURIDAD GARANTIZADA</h4>
+<p class="text-white/70 text-xs mt-2 uppercase tracking-widest">Servicio médico y vigilancia</p>
 </div>
 <div class="relative rounded-2xl overflow-hidden h-48">
-<img class="w-full h-full object-cover" data-alt="detail of a swimming cap and goggles on the sand at a beach" src="./assets/images/cap-goggles.jpg" style="">
+<img class="w-full h-full object-cover" data-alt="detail of a swimming cap and goggles on the sand at a beach" src="./assets/images/cap-goggles.jpg">
 </div>
 </div>
 </div>
@@ -173,110 +272,115 @@
 <section class="py-24 bg-surface" id="categories">
 <div class="max-w-7xl mx-auto px-8">
 <div class="text-center mb-16">
-<h2 class="text-4xl md:text-5xl font-black text-primary italic mb-4" style="">CATEGORÍAS Y PREMIOS</h2>
-<p class="text-on-surface-variant max-w-2xl mx-auto" style="">Reconocimiento al esfuerzo y la excelencia técnica en todas las edades y capacidades.</p>
+<h2 class="text-4xl md:text-5xl font-black text-primary italic mb-4 fade-up">CATEGORÍAS Y PREMIOS</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto fade-up">Reconocimiento al esfuerzo y la excelencia técnica en todas las edades y capacidades.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-16">
-<div class="bg-surface-container-highest p-6 rounded-xl text-center">
-<div class="material-symbols-outlined text-4xl text-primary mb-3" style="">child_care</div>
-<div class="font-bold uppercase text-xs tracking-widest mb-1" style="">Categoría</div>
-<div class="text-xl font-black text-primary-container" style="">INFANTIL</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16 stagger-children">
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">child_care</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">INFANTIL</div>
 </div>
-<div class="bg-surface-container-highest p-6 rounded-xl text-center">
-<div class="material-symbols-outlined text-4xl text-primary mb-3" style="">school</div>
-<div class="font-bold uppercase text-xs tracking-widest mb-1" style="">Categoría</div>
-<div class="text-xl font-black text-primary-container" style="">JUNIOR</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">school</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">JUNIOR</div>
 </div>
-<div class="bg-surface-container-highest p-6 rounded-xl text-center">
-<div class="material-symbols-outlined text-4xl text-primary mb-3" style="">sports_score</div>
-<div class="font-bold uppercase text-xs tracking-widest mb-1" style="">Categoría</div>
-<div class="text-xl font-black text-primary-container" style="">SENIOR</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">sports_score</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">SENIOR</div>
 </div>
-<div class="bg-surface-container-highest p-6 rounded-xl text-center">
-<div class="material-symbols-outlined text-4xl text-primary mb-3" style="">stars</div>
-<div class="font-bold uppercase text-xs tracking-widest mb-1" style="">Categoría</div>
-<div class="text-xl font-black text-primary-container" style="">MASTER</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">stars</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">MASTER</div>
 </div>
-<div class="bg-surface-container-highest p-6 rounded-xl text-center">
-<div class="material-symbols-outlined text-4xl text-primary mb-3" style="">accessible_forward</div>
-<div class="font-bold uppercase text-xs tracking-widest mb-1" style="">Categoría</div>
-<div class="text-xl font-black text-primary-container" style="">ADAPTADA</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center col-span-2 md:col-span-1">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">accessible_forward</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">ADAPTADA</div>
 </div>
 </div>
-<div class="bg-primary text-on-primary rounded-3xl p-10 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative">
+<div class="bg-primary text-on-primary rounded-3xl p-10 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative fade-up">
 <div class="absolute right-0 top-0 opacity-10">
-<span class="material-symbols-outlined text-[15rem]" style="">emoji_events</span>
+<span class="material-symbols-outlined text-[15rem]">emoji_events</span>
 </div>
 <div class="flex-1 relative z-10">
-<h3 class="text-3xl font-black italic mb-6" style="">PREMIOS DEL CIRCUITO</h3>
-<p class="text-lg text-primary-fixed mb-6" style="">Se otorgarán trofeos y medallas a los tres primeros clasificados de cada categoría, tanto por prueba individual como en la clasificación general del circuito completo.</p>
-<div class="flex gap-4">
+<h3 class="text-3xl font-black italic mb-6">PREMIOS DEL CIRCUITO</h3>
+<p class="text-lg text-primary-fixed mb-6">Se otorgarán trofeos y medallas a los tres primeros clasificados de cada categoría, tanto por prueba individual como en la clasificación general del circuito completo.</p>
+<div class="flex flex-wrap gap-4">
 <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-<span class="material-symbols-outlined text-secondary-fixed" style="">workspace_premium</span>
-<span class="text-sm font-bold" style="">TROFEOS</span>
+<span class="material-symbols-outlined text-secondary-fixed">workspace_premium</span>
+<span class="text-sm font-bold">TROFEOS</span>
 </div>
 <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-<span class="material-symbols-outlined text-secondary-fixed" style="">military_tech</span>
-<span class="text-sm font-bold" style="">MEDALLAS</span>
+<span class="material-symbols-outlined text-secondary-fixed">military_tech</span>
+<span class="text-sm font-bold">MEDALLAS</span>
 </div>
 </div>
 </div>
 <div class="w-full md:w-1/3 relative z-10">
 <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
-<h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-primary-fixed" style="">Importante</h4>
-<p class="text-sm text-white/80" style="">Para optar a la clasificación general del circuito es obligatorio haber participado en al menos 3 de las 4 pruebas programadas.</p>
+<h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-primary-fixed">Importante</h4>
+<p class="text-sm text-white/80">Para optar a la clasificación general del circuito es obligatorio haber participado en al menos 3 de las 4 pruebas programadas.</p>
 </div>
 </div>
 </div>
 </div>
 </section>
 <!-- Schedule (Horarios) -->
-<section class="py-24 bg-surface-container-low">
+<section class="py-24 bg-surface-container-low" id="schedule">
 <div class="max-w-4xl mx-auto px-8">
 <div class="text-center mb-16">
-<h2 class="text-4xl md:text-5xl font-black text-on-surface italic mb-4" style="">HORARIOS</h2>
-<p class="text-on-surface-variant" style="">Puntualidad y organización para un desarrollo óptimo de la competición.</p>
+<h2 class="text-4xl md:text-5xl font-black text-on-surface italic mb-4 fade-up">HORARIOS</h2>
+<p class="text-on-surface-variant fade-up">Puntualidad y organización para un desarrollo óptimo de la competición.</p>
 </div>
-<div class="space-y-4">
-<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20" style="">09:30</div>
+<div class="space-y-4 stagger-children">
+<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">09:30</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
-<h4 class="font-bold text-on-surface group-hover:text-white" style="">Apertura de Control</h4>
-<p class="text-sm text-on-surface-variant group-hover:text-white/80" style="">Entrega de gorros y chips en la zona de meta.</p>
+<h4 class="font-bold text-on-surface group-hover:text-white">Apertura de Control</h4>
+<p class="text-sm text-on-surface-variant group-hover:text-white/80">Entrega de gorros y chips en la zona de meta.</p>
 </div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">badge</span>
 </div>
-<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20" style="">10:45</div>
+<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">10:45</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
-<h4 class="font-bold text-on-surface group-hover:text-white" style="">Charla Técnica (Briefing)</h4>
-<p class="text-sm text-on-surface-variant group-hover:text-white/80" style="">Indicaciones finales sobre el recorrido y seguridad.</p>
+<h4 class="font-bold text-on-surface group-hover:text-white">Charla Técnica (Briefing)</h4>
+<p class="text-sm text-on-surface-variant group-hover:text-white/80">Indicaciones finales sobre el recorrido y seguridad.</p>
 </div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">record_voice_over</span>
 </div>
-<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20" style="">11:00</div>
+<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">11:00</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
-<h4 class="font-bold text-on-surface group-hover:text-white" style="">Salida Travesía General</h4>
-<p class="text-sm text-on-surface-variant group-hover:text-white/80" style="">Distancia 1500 metros.</p>
+<h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía General</h4>
+<p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 1500 metros.</p>
 </div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">waves</span>
 </div>
-<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20" style="">12:30</div>
+<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">12:30</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
-<h4 class="font-bold text-on-surface group-hover:text-white" style="">Salida Travesía Infantil</h4>
-<p class="text-sm text-on-surface-variant group-hover:text-white/80" style="">Distancia 500 metros.</p>
+<h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía Infantil</h4>
+<p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 500 metros.</p>
 </div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">pool</span>
 </div>
-<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20" style="">13:30</div>
+<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">13:30</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
-<h4 class="font-bold text-on-surface group-hover:text-white" style="">Ceremonia de Entrega</h4>
-<p class="text-sm text-on-surface-variant group-hover:text-white/80" style="">Premios para todas las categorías.</p>
+<h4 class="font-bold text-on-surface group-hover:text-white">Ceremonia de Entrega</h4>
+<p class="text-sm text-on-surface-variant group-hover:text-white/80">Premios para todas las categorías.</p>
 </div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">emoji_events</span>
 </div>
 </div>
 </div>
@@ -285,50 +389,54 @@
 <section class="py-24 bg-surface" id="registration">
 <div class="max-w-7xl mx-auto px-8">
 <div class="flex flex-col items-center mb-16 text-center">
-<h2 class="text-4xl md:text-5xl font-black text-primary italic mb-6" style="">INSCRIPCIONES</h2>
-<p class="text-on-surface-variant max-w-2xl mb-8" style="">Reserva tu plaza ahora. Los nadadores locales disfrutan de precios especiales. La participación está limitada por razones de seguridad.</p>
+<h2 class="text-4xl md:text-5xl font-black text-primary italic mb-6 fade-up">INSCRIPCIONES</h2>
+<p class="text-on-surface-variant max-w-2xl mb-8 fade-up">Reserva tu plaza ahora. Los nadadores locales disfrutan de precios especiales. La participación está limitada por razones de seguridad.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 stagger-children">
 <!-- Option 1 -->
-<div class="bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
-<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest" style="">PRUEBA ÚNICA</div>
-<div class="text-5xl font-black text-on-surface mb-6" style="">15€</div>
-<p class="text-on-surface-variant text-sm mb-8 flex-1" style="">Acceso a una de las travesías del circuito a elegir.</p>
-<button class="w-full py-3 rounded-full bg-primary text-on-primary font-bold text-sm uppercase tracking-wider" style="">Inscribirse</button>
+<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
+<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">PRUEBA ÚNICA</div>
+<div class="text-5xl font-black text-on-surface mb-2">15<span class="text-2xl">€</span></div>
+<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
+<p class="text-on-surface-variant text-sm mb-8 flex-1">Acceso a una de las travesías del circuito a elegir.</p>
+<button class="w-full py-3 rounded-full bg-primary text-on-primary font-bold text-sm uppercase tracking-wider hover:bg-primary-container transition-colors">Inscribirse</button>
 </div>
 <!-- Option 2 - Featured -->
-<div class="bg-primary text-on-primary p-8 rounded-3xl shadow-2xl scale-105 relative overflow-hidden text-center flex flex-col">
+<div class="hover-lift fade-up bg-primary text-on-primary p-8 rounded-3xl shadow-2xl md:scale-105 relative overflow-hidden text-center flex flex-col">
 <div class="absolute top-4 right-4 rotate-12">
-<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded text-[10px] font-black uppercase" style="">RECOMENDADO</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-black uppercase">RECOMENDADO</span>
 </div>
-<div class="text-sm font-bold text-primary-fixed mb-2 uppercase tracking-widest" style="">CIRCUITO COMPLETO</div>
-<div class="text-5xl font-black text-white mb-6" style="">32€</div>
-<p class="text-primary-fixed text-sm mb-8 flex-1" style="">Participación en las 4 pruebas del circuito. Ahorro del 45%.</p>
-<button class="w-full py-3 rounded-full bg-white text-primary font-black text-sm uppercase tracking-wider" style="">Inscribirse</button>
+<div class="text-sm font-bold text-primary-fixed mb-2 uppercase tracking-widest">CIRCUITO COMPLETO</div>
+<div class="text-5xl font-black text-white mb-2">32<span class="text-2xl">€</span></div>
+<p class="text-xs text-primary-fixed mb-6">las 4 pruebas · ahorra 45%</p>
+<p class="text-primary-fixed text-sm mb-8 flex-1">Participación en las 4 pruebas del circuito.</p>
+<button class="w-full py-3 rounded-full bg-white text-primary font-black text-sm uppercase tracking-wider hover:bg-white/90 transition-colors">Inscribirse</button>
 </div>
 <!-- Option 3 -->
-<div class="bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
-<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest" style="">FUERA DE PLAZO</div>
-<div class="text-5xl font-black text-on-surface mb-6" style="">25€</div>
-<p class="text-on-surface-variant text-sm mb-8 flex-1" style="">Inscripciones realizadas en la última semana previa al evento.</p>
-<button class="w-full py-3 rounded-full bg-outline text-white font-bold text-sm uppercase tracking-wider" style="">Inscribirse</button>
+<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
+<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">FUERA DE PLAZO</div>
+<div class="text-5xl font-black text-on-surface mb-2">25<span class="text-2xl">€</span></div>
+<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
+<p class="text-on-surface-variant text-sm mb-8 flex-1">Inscripciones realizadas en la última semana previa al evento.</p>
+<button class="w-full py-3 rounded-full bg-outline text-white font-bold text-sm uppercase tracking-wider hover:bg-on-surface-variant transition-colors">Inscribirse</button>
 </div>
 <!-- Option 4 -->
-<div class="bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
-<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest" style="">NADADOR LOCAL</div>
-<div class="text-5xl font-black text-on-surface mb-6" style="">8€</div>
-<p class="text-on-surface-variant text-sm mb-8 flex-1" style="">Precio especial para empadronados en el municipio de la prueba.</p>
-<button class="w-full py-3 rounded-full bg-secondary text-on-secondary font-bold text-sm uppercase tracking-wider" style="">Inscribirse</button>
+<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
+<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">NADADOR LOCAL</div>
+<div class="text-5xl font-black text-on-surface mb-2">8<span class="text-2xl">€</span></div>
+<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
+<p class="text-on-surface-variant text-sm mb-8 flex-1">Precio especial para empadronados en el municipio de la prueba.</p>
+<button class="w-full py-3 rounded-full bg-secondary text-on-secondary font-bold text-sm uppercase tracking-wider hover:bg-secondary-container hover:text-on-secondary-container transition-colors">Inscribirse</button>
 </div>
 </div>
 <div class="bg-surface-container-high rounded-3xl p-12 text-center max-w-4xl mx-auto">
-<h3 class="text-3xl font-black text-on-surface italic mb-4" style="">¿LISTO PARA EL RETO?</h3>
-<p class="text-on-surface-variant mb-10 text-lg" style="">Únete a cientos de nadadores en la travesía a nado más importante de la provincia de Almería.</p>
-<a class="inline-flex items-center gap-3 bg-primary-container text-white px-12 py-5 rounded-full text-xl font-black hover:shadow-2xl transition-all active:scale-95" href="#" style="">
-<span class="material-symbols-outlined" style="">how_to_reg</span>
+<h3 class="text-3xl font-black text-on-surface italic mb-4">¿LISTO PARA EL RETO?</h3>
+<p class="text-on-surface-variant mb-10 text-lg">Únete a cientos de nadadores en la travesía a nado más importante de la provincia de Almería.</p>
+<a class="inline-flex items-center gap-3 bg-primary-container text-white px-12 py-5 rounded-full text-xl font-black hover:shadow-2xl hover:shadow-primary/30 transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
                         INSCRIBIRSE AHORA
                     </a>
-<p class="text-on-surface-variant text-sm mt-6 max-w-2xl mx-auto" style="">
+<p class="text-on-surface-variant text-sm mt-6 max-w-2xl mx-auto">
                         Antes de enviar tus datos en el proceso de inscripción, revisa la
                         <a class="underline font-semibold text-primary" href="./politica-privacidad.html">Política de Privacidad</a>.
                         Responsable del tratamiento: Ebone Servicios Educacion Deporte SL. Contacto: it@ebone.es.
@@ -372,26 +480,49 @@
 </div>
 </section>
 <!-- Footer -->
-<footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 border-t-0">
-<div class="flex flex-col items-center gap-8 px-4 w-full text-center">
-<div class="font-bold text-cyan-800 dark:text-cyan-200 text-2xl font-headline tracking-tight uppercase" style="">
-                ALMERÍA TRAVESÍAS
-            </div>
-<div class="flex gap-8 font-['Lexend'] text-sm uppercase tracking-widest">
-<a class="text-slate-500 hover:text-cyan-600 transition-colors" href="./politica-privacidad.html" style="">POLÍTICA DE PRIVACIDAD</a>
-<a class="text-slate-500 hover:text-cyan-600 transition-colors" href="mailto:it@ebone.es" style="">CONTACTO</a>
-<a class="text-slate-500 hover:text-cyan-600 transition-colors" href="./condiciones-servicio.html" style="">CONDICIONES DE SERVICIO</a>
-<button class="text-slate-500 hover:text-cyan-600 transition-colors" data-cookie-action="configure" type="button">CONFIGURAR COOKIES</button>
+<footer class="bg-surface-container-low w-full border-t border-outline-variant/20">
+<div class="max-w-7xl mx-auto px-6 md:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+<!-- Brand -->
+<div>
+<div class="font-black text-primary text-2xl font-headline tracking-tight italic mb-4">
+                    ALMERÍA TRAVESÍAS
+                </div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Circuito Provincial de Travesías a Nado 2026. Organizado por la Diputación de Almería.</p>
 </div>
-<p class="text-slate-500 dark:text-slate-500 font-['Lexend'] text-sm uppercase tracking-widest max-w-md" style="">
-                © 2026 Diputación de Almería</p>
-<div class="flex gap-6 mt-4">
-<span class="material-symbols-outlined text-cyan-700" style="">social_leaderboard</span>
-<span class="material-symbols-outlined text-cyan-700" style="">share</span>
-<span class="material-symbols-outlined text-cyan-700" style="">alternate_email</span>
+<!-- Links -->
+<div>
+<h4 class="font-headline font-bold text-on-surface text-sm uppercase tracking-widest mb-4">Legal</h4>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors" href="./politica-privacidad.html">Política de Privacidad</a>
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors" href="./condiciones-servicio.html">Condiciones de Servicio</a>
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors" href="./politica-cookies.html">Política de Cookies</a>
+<button class="text-on-surface-variant text-sm hover:text-primary transition-colors text-left" data-cookie-action="configure" type="button">Configurar Cookies</button>
+</div>
+</div>
+<!-- Contact -->
+<div>
+<h4 class="font-headline font-bold text-on-surface text-sm uppercase tracking-widest mb-4">Contacto</h4>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="mailto:it@ebone.es">
+<span class="material-symbols-outlined text-lg">mail</span> it@ebone.es
+</a>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-on-surface-variant text-xs font-headline tracking-wider">© 2026 Diputación de Almería</p>
+<div class="flex items-center gap-1 text-on-surface-variant text-xs">
+<span class="material-symbols-outlined text-primary text-sm">waves</span>
+<span class="font-headline tracking-wider">ALMERÍA TRAVESÍAS 2026</span>
+</div>
 </div>
 </div>
 </footer>
+<!-- Back to top -->
+<button class="back-to-top bg-primary text-on-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-primary-container transition-colors" id="back-to-top" aria-label="Volver arriba">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
 <script>
         (function () {
             var CONSENT_KEY = "cookie_consent_v1";
@@ -457,5 +588,71 @@
                 setPanelVisibility("overlay", true);
             }
         })();
+    </script>
+<script>
+    // Mobile menu
+    (function() {
+        var burger = document.getElementById('burger-btn');
+        var closeBtn = document.getElementById('close-menu-btn');
+        var menu = document.getElementById('mobile-menu');
+        var backdrop = document.getElementById('mobile-backdrop');
+        var overlay = document.getElementById('mobile-overlay');
+
+        function openMenu() {
+            menu.classList.add('open');
+            backdrop.style.opacity = '1';
+            backdrop.style.pointerEvents = 'auto';
+            overlay.style.pointerEvents = 'auto';
+        }
+        function closeMenu() {
+            menu.classList.remove('open');
+            backdrop.style.opacity = '0';
+            backdrop.style.pointerEvents = 'none';
+            overlay.style.pointerEvents = 'none';
+        }
+        burger.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        backdrop.addEventListener('click', closeMenu);
+        document.querySelectorAll('[data-mobile-link]').forEach(function(link) {
+            link.addEventListener('click', closeMenu);
+        });
+    })();
+
+    // Scroll-triggered animations
+    (function() {
+        var targets = document.querySelectorAll('.fade-up');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            targets.forEach(function(t) { observer.observe(t); });
+        } else {
+            targets.forEach(function(t) { t.classList.add('visible'); });
+        }
+    })();
+
+    // Nav shadow on scroll
+    (function() {
+        var nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+    })();
+
+    // Back to top
+    (function() {
+        var btn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', function() {
+            btn.classList.toggle('show', window.scrollY > 600);
+        }, { passive: true });
+        btn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
     </script>
 </body></html>

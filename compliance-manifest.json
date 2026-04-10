@@ -65,7 +65,7 @@
   "forms": [],
   "legal": {
     "privacy_policy": true,
-    "cookie_policy": false,
+    "cookie_policy": true,
     "legal_notice": false,
     "terms_and_conditions": true,
     "withdrawal_policy": false
@@ -87,5 +87,5 @@
     }
   ],
   "retention_rules": [],
-  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal ni politica de cookies a fecha de 2026-04-10. Sigue pendiente revisar la incoherencia de fechas: el title indica 2025, mientras el contenido principal muestra temporada y calendario 2026, y confirmar si Tailwind CDN se mantendra en produccion."
+  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal a fecha de 2026-04-10. La politica de cookies se publica con marcadores TODO-LEGAL para revision juridica. Sigue pendiente confirmar si Tailwind CDN se mantendra en produccion."
 }

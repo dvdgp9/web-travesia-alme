@@ -3,12 +3,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>CIRCUITO PROVINCIAL DE TRAVESÍAS A NADO 2026 | Diputación de Almería</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="external-style-fonts" type="application/json">
-      {"href":"https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap","category":"external_media"}
-    </script>
-<script id="external-style-icons" type="application/json">
-      {"href":"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap","category":"external_media"}
-    </script>
+<link href="./assets/fonts/fonts.css" rel="stylesheet">
+<link href="./assets/fonts/material-symbols.css" rel="stylesheet">
 <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -115,7 +111,7 @@
 <!-- Hero Section -->
 <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="dynamic low angle shot of open water swimmers starting a race with sun reflecting on the Mediterranean sea waves" data-external-src="https://lh3.googleusercontent.com/aida-public/AB6AXuBicL60t33peWUoQPw7xm2iyCbaIQKaMnV-HNjyUeh3nkBV_A0t64WfScKUp2cOidLZCrpkTPhmvubC1p4iJ24PwC7Dp9FNXk72mEMZI-0NCD_KMjnU0pG2vgfGOBFUguUkFNSpS43XsK1QYP6j5RV238szTmv_e8dE3nvq1uHvCdNp_uGjAFjBsLXc5Yn0N4Le9mOtKyOZOTMZXBDM_K3KOpVpL1xrTuAUCYMs5-dGdXGVCJzieaNhkrYYCzKwsNfdLSvRf8jzeg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" style="">
+<img class="w-full h-full object-cover" data-alt="dynamic low angle shot of open water swimmers starting a race with sun reflecting on the Mediterranean sea waves" src="./assets/images/hero-swimmers.jpg" style="">
 <div class="absolute inset-0 bg-gradient-to-tr from-primary/90 via-primary-container/40 to-transparent"></div>
 </div>
 <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
@@ -225,7 +221,7 @@
 <!-- Visual/Featured Block -->
 <div class="lg:col-span-7 grid grid-cols-2 gap-4">
 <div class="col-span-2 relative h-64 rounded-2xl overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="crystal clear turquoise water of a Mediterranean cove with swimmers in the distance" data-external-src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsLSHfTORLEMN2pSdYpvocL-1bsaS6MJCYtDo77uZws2dkSOn01v6Bv-xoXJGUoMs2NXIgdriL7lvlhciHPVM8tKRSLWGrGXVl_Vy40dQC-_2RyX571HCVZZWy-soaixejgOHHHgII_fbxQywj4bFI0L_JAfR1UiDeiKVz-1azCgqIHaa8sGUoAagGPO7iFSD2TCuDshmic2no8nhAoBqYqjV_y4TMt2UEC3gXk8_u1Yo0U5cMpX83qC82wypryJv1_i5VsUCs1g" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" style="">
+<img class="w-full h-full object-cover" data-alt="crystal clear turquoise water of a Mediterranean cove with swimmers in the distance" src="./assets/images/cove-swimmers.jpg" style="">
 <div class="absolute inset-0 bg-primary/20"></div>
 </div>
 <div class="relative rounded-2xl overflow-hidden h-48 bg-primary p-8 flex flex-col justify-end">
@@ -233,7 +229,7 @@
 <p class="text-white/70 text-xs mt-2 uppercase tracking-widest" style="">Servicio médico y vigilancia</p>
 </div>
 <div class="relative rounded-2xl overflow-hidden h-48">
-<img class="w-full h-full object-cover" data-alt="detail of a swimming cap and goggles on the sand at a beach" data-external-src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0voJ3rqc3y8agWVAq8DTB9p6_SORsYzpBHfyNHGKXYZ_bo4CyBoDse5Q07sWSo72Eql2NIfZiNbpJZ7zBXXEtQ2u7MFNFFJajf8Qal5tJioO3rKmZtnq9RK9OVQdtB39I00UyV7OtYdOff9Z5SkwxYwztZhbE8oXbJtwm95VTve1LNkmQSONrc2XqAgEYU-B11YmCAyb_mBrpcSU9zVG2DnPn7Oyw8WaVwaPdUW_7fws6rkPNUhTUQZuGrblC-RjZ-JeWdvGmPA" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" style="">
+<img class="w-full h-full object-cover" data-alt="detail of a swimming cap and goggles on the sand at a beach" src="./assets/images/cap-goggles.jpg" style="">
 </div>
 </div>
 </div>
@@ -411,12 +407,11 @@
 <section class="fixed bottom-0 left-0 right-0 z-[110] bg-white border-t border-slate-200 shadow-2xl hidden" data-cookie-panel="banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
 <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
 <p class="text-sm text-slate-700 max-w-3xl">
-            Usamos solo elementos tecnicos necesarios por defecto. El contenido externo (fuentes e imagenes de terceros) solo se carga si lo aceptas.
-            Puedes cambiarlo cuando quieras en "Configurar cookies". Mas informacion en la
+            Usamos solo almacenamiento tecnico necesario para recordar tu preferencia de privacidad.
+            Puedes revisarlo cuando quieras en "Configurar cookies". Mas informacion en la
             <a class="underline font-semibold text-primary" href="./politica-cookies.html">Politica de Cookies</a>.
         </p>
 <div class="flex flex-wrap gap-3">
-<button class="px-4 py-2 rounded-full border border-slate-300 text-slate-700 text-sm font-semibold" data-cookie-action="reject">Rechazar</button>
 <button class="px-4 py-2 rounded-full border border-primary text-primary text-sm font-semibold" data-cookie-action="configure">Configurar</button>
 <button class="px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold" data-cookie-action="accept">Aceptar</button>
 </div>
@@ -426,7 +421,7 @@
 <div class="absolute inset-0 bg-slate-900/60" data-cookie-close="true"></div>
 <div class="relative max-w-2xl mx-auto mt-16 bg-white rounded-2xl shadow-2xl p-8">
 <h3 class="text-2xl font-black text-on-surface mb-3">Preferencias de cookies</h3>
-<p class="text-sm text-on-surface-variant mb-6">Puedes mantener solo lo necesario o activar contenido externo.</p>
+<p class="text-sm text-on-surface-variant mb-6">Actualmente solo usamos almacenamiento tecnico necesario.</p>
 <div class="space-y-4">
 <div class="flex items-start justify-between gap-4 p-4 rounded-xl border border-slate-200">
 <div>
@@ -435,13 +430,6 @@
 </div>
 <span class="text-xs font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">SIEMPRE</span>
 </div>
-<label class="flex items-start justify-between gap-4 p-4 rounded-xl border border-slate-200 cursor-pointer">
-<div>
-<h4 class="font-bold">Contenido externo</h4>
-<p class="text-sm text-on-surface-variant">Carga fuentes e imagenes alojadas en terceros (Google).</p>
-</div>
-<input class="mt-1 h-5 w-5" data-cookie-toggle="external_media" type="checkbox">
-</label>
 </div>
 <div class="mt-8 flex flex-wrap gap-3 justify-end">
 <button class="px-4 py-2 rounded-full border border-slate-300 text-slate-700 text-sm font-semibold" data-cookie-action="close">Cancelar</button>
@@ -488,36 +476,6 @@
                 localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
             }
 
-            function enableExternalStyles() {
-                document.querySelectorAll("script[type='application/json'][id^='external-style-']").forEach(function (node) {
-                    if (node.dataset.loaded === "true") return;
-                    try {
-                        var cfg = JSON.parse(node.textContent || "{}");
-                        if (cfg.category !== "external_media" || !cfg.href) return;
-                        var link = document.createElement("link");
-                        link.rel = "stylesheet";
-                        link.href = cfg.href;
-                        document.head.appendChild(link);
-                        node.dataset.loaded = "true";
-                    } catch (e) {}
-                });
-            }
-
-            function enableExternalMedia() {
-                document.querySelectorAll("img[data-external-src]").forEach(function (img) {
-                    if (!img.getAttribute("src") || img.getAttribute("src").indexOf("data:image/") === 0) {
-                        img.setAttribute("src", img.getAttribute("data-external-src"));
-                    }
-                });
-            }
-
-            function applyConsent(consent) {
-                if (consent.external_media) {
-                    enableExternalStyles();
-                    enableExternalMedia();
-                }
-            }
-
             function setPanelVisibility(panelName, visible) {
                 var el = document.querySelector("[data-cookie-panel='" + panelName + "']");
                 if (!el) return;
@@ -525,9 +483,6 @@
             }
 
             function openModal() {
-                var consent = readConsent() || { external_media: false };
-                var toggle = document.querySelector("[data-cookie-toggle='external_media']");
-                if (toggle) toggle.checked = !!consent.external_media;
                 setPanelVisibility("modal", true);
             }
 
@@ -535,14 +490,12 @@
                 setPanelVisibility("modal", false);
             }
 
-            function saveConsent(externalEnabled) {
+            function saveConsent() {
                 var consent = {
                     necessary: true,
-                    external_media: !!externalEnabled,
                     updated_at: new Date().toISOString()
                 };
                 writeConsent(consent);
-                applyConsent(consent);
                 setPanelVisibility("banner", false);
                 setPanelVisibility("overlay", false);
                 closeModal();
@@ -552,13 +505,10 @@
                 var actionEl = event.target.closest("[data-cookie-action]");
                 if (actionEl) {
                     var action = actionEl.getAttribute("data-cookie-action");
-                    if (action === "accept") saveConsent(true);
-                    if (action === "reject") saveConsent(false);
+                    if (action === "accept") saveConsent();
+                    if (action === "reject") saveConsent();
                     if (action === "configure") openModal();
-                    if (action === "save") {
-                        var toggle = document.querySelector("[data-cookie-toggle='external_media']");
-                        saveConsent(toggle ? toggle.checked : false);
-                    }
+                    if (action === "save") saveConsent();
                     if (action === "close") closeModal();
                 }
                 if (event.target.matches("[data-cookie-close='true']")) closeModal();
@@ -566,7 +516,8 @@
 
             var existing = readConsent();
             if (existing) {
-                applyConsent(existing);
+                setPanelVisibility("banner", false);
+                setPanelVisibility("overlay", false);
             } else {
                 setPanelVisibility("banner", true);
                 setPanelVisibility("overlay", true);

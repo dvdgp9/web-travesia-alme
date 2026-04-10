@@ -35,10 +35,10 @@
       {
         "name": "Google Fonts",
         "category": "external_media",
-        "enabled": true,
+        "enabled": false,
         "processor": "Google",
         "transfer_outside_eea": true,
-        "notes": "Se cargan fuentes desde fonts.googleapis.com"
+        "notes": "Desactivado en produccion actual: fuentes autoalojadas en local"
       },
       {
         "name": "Tailwind CDN",
@@ -51,15 +51,14 @@
       {
         "name": "Google Hosted Images",
         "category": "external_media",
-        "enabled": true,
+        "enabled": false,
         "processor": "Google",
         "transfer_outside_eea": true,
-        "notes": "Las imagenes visibles se sirven desde lh3.googleusercontent.com"
+        "notes": "Desactivado en produccion actual: imagenes servidas desde el propio sitio"
       }
     ],
     "consent_categories": [
-      "necessary",
-      "external_media"
+      "necessary"
     ]
   },
   "forms": [],
@@ -72,13 +71,6 @@
   },
   "processors": [
     {
-      "name": "Google",
-      "role": "fonts_and_media_delivery",
-      "country": "US",
-      "transfer_outside_eea": true,
-      "safeguard": "TODO: confirmar base de legitimacion y garantias aplicables"
-    },
-    {
       "name": "Tailwind Labs",
       "role": "frontend_cdn",
       "country": "US",
@@ -87,5 +79,5 @@
     }
   ],
   "retention_rules": [],
-  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal a fecha de 2026-04-10. La politica de cookies se publica con marcadores TODO-LEGAL para revision juridica. Sigue pendiente confirmar si Tailwind CDN se mantendra en produccion."
+  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal a fecha de 2026-04-10. Fuentes e imagenes externas de Google se han sustituido por recursos locales. Sigue pendiente confirmar si Tailwind CDN se mantendra en produccion."
 }

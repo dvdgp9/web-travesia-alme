@@ -1,0 +1,91 @@
+{
+  "site": {
+    "name": "Circuito Provincial de Travesias a Nado | Diputacion de Almeria",
+    "url": "https://www.travesiasdipalme.es/",
+    "languages": [
+      "es"
+    ],
+    "target_regions": [
+      "ES",
+      "EU"
+    ]
+  },
+  "controller": {
+    "legal_name": "Ebone Servicios Educacion Deporte SL",
+    "brand_name": "Almeria Travesias",
+    "tax_id": "B73405599",
+    "registry_details": "No consta informacion registral adicional facilitada",
+    "address": "Calle Monsenor Jose Manuel Lorca, 17 - BJ, Murcia, 30100, Murcia",
+    "email": "it@ebone.es",
+    "phone": null,
+    "country": "ES",
+    "dpo_contact": null
+  },
+  "site_features": {
+    "ecommerce": false,
+    "accounts": false,
+    "newsletter": false,
+    "jobs": false,
+    "minors_targeted": true,
+    "booking": true,
+    "support_chat": false
+  },
+  "tracking": {
+    "services": [
+      {
+        "name": "Google Fonts",
+        "category": "external_media",
+        "enabled": true,
+        "processor": "Google",
+        "transfer_outside_eea": true,
+        "notes": "Se cargan fuentes desde fonts.googleapis.com"
+      },
+      {
+        "name": "Tailwind CDN",
+        "category": "necessary",
+        "enabled": true,
+        "processor": "Tailwind Labs",
+        "transfer_outside_eea": true,
+        "notes": "Se carga el script desde cdn.tailwindcss.com"
+      },
+      {
+        "name": "Google Hosted Images",
+        "category": "external_media",
+        "enabled": true,
+        "processor": "Google",
+        "transfer_outside_eea": true,
+        "notes": "Las imagenes visibles se sirven desde lh3.googleusercontent.com"
+      }
+    ],
+    "consent_categories": [
+      "necessary",
+      "external_media"
+    ]
+  },
+  "forms": [],
+  "legal": {
+    "privacy_policy": true,
+    "cookie_policy": false,
+    "legal_notice": false,
+    "terms_and_conditions": true,
+    "withdrawal_policy": false
+  },
+  "processors": [
+    {
+      "name": "Google",
+      "role": "fonts_and_media_delivery",
+      "country": "US",
+      "transfer_outside_eea": true,
+      "safeguard": "TODO: confirmar base de legitimacion y garantias aplicables"
+    },
+    {
+      "name": "Tailwind Labs",
+      "role": "frontend_cdn",
+      "country": "US",
+      "transfer_outside_eea": true,
+      "safeguard": "Pendiente de confirmar si el CDN se mantendra en produccion"
+    }
+  ],
+  "retention_rules": [],
+  "notes": "Datos completados a partir de lo visible en index.html y de la informacion facilitada por el responsable del sitio. No existe aviso legal ni politica de cookies a fecha de 2026-04-10. Sigue pendiente revisar la incoherencia de fechas: el title indica 2025, mientras el contenido principal muestra temporada y calendario 2026, y confirmar si Tailwind CDN se mantendra en produccion."
+}

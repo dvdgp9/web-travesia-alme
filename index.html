@@ -88,74 +88,9 @@
         .race-modal-content {
             position: relative;
             z-index: 1;
-            width: 100%;
-            max-width: 42rem;
-            max-height: calc(100vh - 2rem);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            background: #ffffff;
-            box-shadow: 0 28px 70px rgba(2, 6, 23, 0.35);
-            display: flex;
-            flex-direction: column;
         }
-        .race-modal-header {
-            background: linear-gradient(130deg, #00586f 0%, #007992 100%);
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-        .race-modal-close {
-            width: 2.25rem;
-            height: 2.25rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.16);
-            color: #ffffff;
-            transition: background-color 0.2s ease;
-        }
-        .race-modal-close:hover { background: rgba(255, 255, 255, 0.28); }
-        .race-modal-body {
-            padding: 1.25rem 1.5rem 1.5rem;
-            overflow-y: auto;
-        }
-        .race-modal-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0.75rem;
-        }
-        .race-modal-link {
-            display: block;
-            border-radius: 1rem;
-            background: #f2f6f8;
-            padding: 0.95rem 1rem;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-        .race-modal-link:hover {
-            background: #e0f0f4;
-            transform: translateY(-2px);
-        }
-        @media (max-width: 768px) {
-            .back-to-top {
-                bottom: 1rem;
-                right: 1rem;
-            }
-            .race-modal-content {
-                max-height: calc(100vh - 1rem);
-                border-radius: 1.25rem;
-            }
-            .race-modal-header,
-            .race-modal-body {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            .race-modal-grid {
-                grid-template-columns: 1fr;
-            }
+        @media (min-width: 640px) {
+            #race-grid { grid-template-columns: 1fr 1fr !important; }
         }
     </style>
 </head>
@@ -202,29 +137,29 @@
 </div>
 </div>
 <!-- Hero Section -->
-<header class="relative min-h-screen flex items-center justify-center pt-24 md:pt-28 pb-14 md:pb-16 overflow-hidden">
+<header class="relative min-h-screen flex items-center justify-center pt-20 sm:pt-28 pb-12 sm:pb-16 overflow-hidden">
 <div class="absolute inset-0 z-0">
 <img class="w-full h-full object-cover" data-alt="dynamic low angle shot of open water swimmers starting a race with sun reflecting on the Mediterranean sea waves" src="./assets/images/hero-swimmers.jpg">
 <div class="absolute inset-0 bg-gradient-to-tr from-primary/90 via-primary-container/40 to-transparent"></div>
 </div>
-<div class="relative z-10 max-w-7xl mx-auto px-5 md:px-8 w-full">
+<div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full">
 <div class="max-w-3xl">
 <img src="./assets/images/Isotipo-ebone-blanco.png" alt="Ebone Isotipo" class="h-12 w-auto mb-8 opacity-90 drop-shadow-md">
 <span class="inline-block px-4 py-1.5 bg-tertiary-container text-on-tertiary-container rounded-full text-sm font-bold tracking-widest uppercase mb-8">
                     Temporada 2026</span>
-<h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white leading-none tracking-tighter italic mb-8">
+<h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-none tracking-tighter italic mb-8">
                     TRAVESÍAS A NADO <br>
 <span class="text-secondary-container">DIPUTACIÓN DE ALMERÍA</span>
 </h1>
-<p class="text-lg md:text-2xl text-white/90 font-medium mb-10 md:mb-12 flex items-center gap-3">
+<p class="text-lg md:text-2xl text-white/90 font-medium mb-8 sm:mb-12 flex items-center gap-3">
 <span class="material-symbols-outlined text-secondary-fixed">waves</span>
                     Organiza: Diputación de Almería
                 </p>
-<div class="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:flex-wrap max-w-md sm:max-w-none">
-<a class="bg-primary-container text-white px-8 sm:px-10 py-4 rounded-full text-base sm:text-lg font-bold hover:shadow-2xl hover:shadow-primary/40 transition-all active:scale-95 text-center" href="#calendar">
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary-container text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:shadow-2xl hover:shadow-primary/40 transition-all active:scale-95" href="#calendar">
                         Ver Calendario
                     </a>
-<a class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-8 sm:px-10 py-4 rounded-full text-base sm:text-lg font-bold hover:bg-white/20 transition-all active:scale-95 text-center" href="#registration">
+<a class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:bg-white/20 transition-all active:scale-95" href="#registration">
                         Inscribirse Ahora
                     </a>
 </div>
@@ -233,11 +168,11 @@
 </header>
 <main>
 <!-- Calendar Grid -->
-<section class="py-20 md:py-24 bg-surface" id="calendar">
+<section class="py-16 md:py-24 bg-surface" id="calendar">
 <div class="max-w-7xl mx-auto px-5 md:px-8">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4">
 <div>
-<h2 class="text-4xl md:text-5xl font-black text-primary italic leading-none mb-4">CALENDARIO OFICIAL</h2>
+<h2 class="text-3xl md:text-5xl font-black text-primary italic leading-none mb-4">CALENDARIO OFICIAL</h2>
 <p class="text-on-surface-variant font-medium">Cuatro pruebas icónicas a lo largo de la costa de Almería.</p>
 </div>
 <div class="hidden md:block h-px flex-1 mx-12 bg-outline-variant/30"></div>
@@ -299,12 +234,12 @@
 </div>
 </section>
 <!-- Information & Requirements (Asymmetric Bento) -->
-<section class="py-20 md:py-24 bg-surface-container-low" id="info">
+<section class="py-16 md:py-24 bg-surface-container-low" id="info">
 <div class="max-w-7xl mx-auto px-5 md:px-8">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 <!-- Text Block -->
 <div class="lg:col-span-5 flex flex-col justify-center">
-<h2 class="text-4xl md:text-5xl font-black text-on-surface italic leading-tight mb-8 fade-up">REQUISITOS Y <br><span class="text-primary-container">DISTANCIAS</span></h2>
+<h2 class="text-3xl md:text-5xl font-black text-on-surface italic leading-tight mb-8 fade-up">REQUISITOS Y <br><span class="text-primary-container">DISTANCIAS</span></h2>
 <div class="space-y-6">
 <div class="bg-surface p-6 rounded-xl">
 <h4 class="font-bold text-primary mb-2 flex items-center gap-2">
@@ -320,7 +255,7 @@
 <span class="material-symbols-outlined">inventory_2</span> Equipamiento Obligatorio
                                 </h4>
 <p class="text-on-surface-variant text-sm">Se entregará en cada prueba:</p>
-<div class="flex flex-wrap gap-2 mt-3">
+<div class="flex flex-wrap gap-2 sm:gap-4 mt-3">
 <span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">GORRO OFICIAL</span>
 <span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">CHIP</span>
 <span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-xs font-bold">DORSAL</span>
@@ -347,7 +282,7 @@
 </div>
 </section>
 <!-- Registration (Inscripciones) -->
-<section class="py-20 md:py-24 bg-surface" id="registration">
+<section class="py-16 md:py-24 bg-surface" id="registration">
 <div class="max-w-7xl mx-auto px-5 md:px-8">
 <div class="flex flex-col items-center mb-16 text-center">
 <h2 class="text-4xl md:text-5xl font-black text-primary italic mb-6 fade-up">INSCRIPCIONES</h2>
@@ -357,7 +292,7 @@
 <!-- Option 1 -->
 <div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
 <div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">PRUEBA ÚNICA</div>
-<div class="text-5xl font-black text-on-surface mb-2">15<span class="text-2xl">€</span></div>
+<div class="text-4xl sm:text-5xl font-black text-on-surface mb-2">15<span class="text-xl sm:text-2xl">€</span></div>
 <p class="text-xs text-on-surface-variant mb-6">por prueba</p>
 <p class="text-on-surface-variant text-sm mb-8 flex-1">Acceso a una de las travesías del circuito a elegir.</p>
 <button class="w-full py-3 rounded-full bg-primary text-on-primary font-bold text-sm uppercase tracking-wider hover:bg-primary-container transition-colors" data-race-modal-open="true" type="button">Elegir mi prueba</button>
@@ -368,16 +303,16 @@
 <span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-black uppercase">RECOMENDADO</span>
 </div>
 <div class="text-sm font-bold text-primary-fixed mb-2 uppercase tracking-widest">TRAVESÍA COMPLETA</div>
-<div class="text-5xl font-black text-white mb-2">32<span class="text-2xl">€</span></div>
+<div class="text-4xl sm:text-5xl font-black text-white mb-2">32<span class="text-xl sm:text-2xl">€</span></div>
 <p class="text-xs text-primary-fixed mb-6">las 4 pruebas · ahorra 45%</p>
 <p class="text-primary-fixed text-sm mb-8 flex-1">Participación en las 4 pruebas de la travesía.</p>
 <a class="w-full py-3 rounded-full bg-white text-primary font-black text-sm uppercase tracking-wider hover:bg-white/90 transition-colors inline-flex items-center justify-center" href="https://www.global-tempo.com/carreras.php?id=3102" rel="noopener noreferrer" target="_blank">Inscribirse</a>
 </div>
 </div>
-<div class="bg-surface-container-high rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto">
+<div class="bg-surface-container-high rounded-3xl p-6 sm:p-12 text-center max-w-4xl mx-auto">
 <h3 class="text-3xl font-black text-on-surface italic mb-4">¿LISTO PARA EL RETO?</h3>
 <p class="text-on-surface-variant mb-10 text-lg">Únete a cientos de nadadores en la travesía a nado más importante de la provincia de Almería.</p>
-<a class="inline-flex items-center justify-center gap-3 bg-primary-container text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-black hover:shadow-2xl hover:shadow-primary/30 transition-all active:scale-95 w-full sm:w-auto" href="https://www.global-tempo.com/carreras.php?id=3102" rel="noopener noreferrer" target="_blank">
+<a class="inline-flex items-center gap-2 sm:gap-3 bg-primary-container text-white px-8 sm:px-12 py-4 sm:py-5 rounded-full text-base sm:text-xl font-black hover:shadow-2xl hover:shadow-primary/30 transition-all active:scale-95" href="https://www.global-tempo.com/carreras.php?id=3102" rel="noopener noreferrer" target="_blank">
 <span class="material-symbols-outlined">how_to_reg</span>
                         INSCRIBIRSE AHORA
                     </a>
@@ -390,7 +325,7 @@
 </div>
 </section>
 <!-- Categories & Prizes -->
-<section class="py-20 md:py-24 bg-surface" id="categories">
+<section class="py-16 md:py-24 bg-surface" id="categories">
 <div class="max-w-7xl mx-auto px-5 md:px-8">
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black text-primary italic mb-4 fade-up">CATEGORÍAS Y PREMIOS</h2>
@@ -458,12 +393,12 @@
 <p class="text-xs mt-2">*Estos premios pueden ser acumulativos</p>
 </div>
 </div>
-<div class="bg-primary text-on-primary rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 md:gap-12 overflow-hidden relative fade-up">
+<div class="bg-primary text-on-primary rounded-3xl p-6 sm:p-10 flex flex-col md:flex-row items-center gap-6 sm:gap-12 overflow-hidden relative fade-up">
 <div class="absolute right-0 top-0 opacity-10">
 <span class="material-symbols-outlined text-[15rem]">emoji_events</span>
 </div>
 <div class="flex-1 relative z-10">
-<h3 class="text-3xl font-black italic mb-6">PREMIOS DE LA TRAVESÍA</h3>
+<h3 class="text-2xl sm:text-3xl font-black italic mb-4 sm:mb-6">PREMIOS DE LA TRAVESÍA</h3>
 <p class="text-lg text-primary-fixed mb-6">Se otorgarán trofeos y medallas a los tres primeros clasificados de cada categoría, tanto por prueba individual como en la clasificación general de la travesía completa.</p>
 <div class="flex flex-wrap gap-4">
 <div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
@@ -486,52 +421,52 @@
 </div>
 </section>
 <!-- Schedule (Horarios) -->
-<section class="py-20 md:py-24 bg-surface-container-low" id="schedule">
+<section class="py-16 md:py-24 bg-surface-container-low" id="schedule">
 <div class="max-w-4xl mx-auto px-5 md:px-8">
 <div class="text-center mb-16">
 <h2 class="text-4xl md:text-5xl font-black text-on-surface italic mb-4 fade-up">HORARIOS</h2>
 <p class="text-on-surface-variant fade-up">Puntualidad y organización para un desarrollo óptimo de la competición.</p>
 </div>
 <div class="space-y-4 stagger-children">
-<div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-surface p-5 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white sm:w-20 shrink-0 font-headline">09:30</div>
-<div class="hidden sm:block w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
+<div class="flex items-center gap-4 sm:gap-6 bg-surface p-4 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-xl sm:text-2xl font-black text-primary group-hover:text-white w-14 sm:w-20 shrink-0 font-headline">09:30</div>
+<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30 hidden sm:block"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Apertura de Control</h4>
 <p class="text-sm text-on-surface-variant group-hover:text-white/80">Entrega de gorros y chips en la zona de meta.</p>
 </div>
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">badge</span>
 </div>
-<div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-surface p-5 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white sm:w-20 shrink-0 font-headline">11:15</div>
-<div class="hidden sm:block w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
+<div class="flex items-center gap-4 sm:gap-6 bg-surface p-4 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-xl sm:text-2xl font-black text-primary group-hover:text-white w-14 sm:w-20 shrink-0 font-headline">11:15</div>
+<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30 hidden sm:block"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Charla Técnica (Briefing)</h4>
 <p class="text-sm text-on-surface-variant group-hover:text-white/80">Indicaciones finales sobre el recorrido y seguridad.</p>
 </div>
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">record_voice_over</span>
 </div>
-<div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-surface p-5 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white sm:w-20 shrink-0 font-headline">11:20</div>
-<div class="hidden sm:block w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
+<div class="flex items-center gap-4 sm:gap-6 bg-surface p-4 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-xl sm:text-2xl font-black text-primary group-hover:text-white w-14 sm:w-20 shrink-0 font-headline">11:20</div>
+<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30 hidden sm:block"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía Infantil</h4>
 <p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 500 metros.</p>
 </div>
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">pool</span>
 </div>
-<div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-surface p-5 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white sm:w-20 shrink-0 font-headline">12:00</div>
-<div class="hidden sm:block w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
+<div class="flex items-center gap-4 sm:gap-6 bg-surface p-4 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-xl sm:text-2xl font-black text-primary group-hover:text-white w-14 sm:w-20 shrink-0 font-headline">12:00</div>
+<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30 hidden sm:block"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía General</h4>
 <p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 1500 metros.</p>
 </div>
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">waves</span>
 </div>
-<div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 bg-surface p-5 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white sm:w-20 shrink-0 font-headline">13:30</div>
-<div class="hidden sm:block w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
+<div class="flex items-center gap-4 sm:gap-6 bg-surface p-4 sm:p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-xl sm:text-2xl font-black text-primary group-hover:text-white w-14 sm:w-20 shrink-0 font-headline">13:30</div>
+<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30 hidden sm:block"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Ceremonia de Entrega</h4>
 <p class="text-sm text-on-surface-variant group-hover:text-white/80">Premios para todas las categorías.</p>
@@ -541,41 +476,44 @@
 </div>
 </div>
 </section>
-<section class="fixed inset-0 z-[130] hidden items-center justify-center p-4" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única">
+</main>
+<section class="fixed inset-0 z-[130] hidden" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única" style="display:none;">
 <div class="race-modal-backdrop" data-race-modal-close="true"></div>
-<div class="race-modal-content">
-<div class="race-modal-header">
+<div class="race-modal-content" style="position:fixed;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding:1rem;pointer-events:none;">
+<div style="pointer-events:auto;width:100%;max-width:540px;max-height:calc(100vh - 2rem);display:flex;flex-direction:column;background:#fff;border-radius:1.25rem;box-shadow:0 25px 60px rgba(0,0,0,.25);overflow:hidden;">
+<div style="background:var(--md-sys-color-primary,#00586f);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
 <div>
-<h3 class="text-xl md:text-2xl font-black text-white">Elegir mi prueba</h3>
-<p class="text-xs text-white/70 mt-1">Inscripción individual · 15 €</p>
+<h3 style="margin:0;font-size:1.25rem;font-weight:900;color:#fff;font-family:'Lexend',sans-serif;">Elegir mi prueba</h3>
+<p style="margin:.25rem 0 0;font-size:.8rem;color:rgba(255,255,255,.65);">Inscripción individual · 15 €</p>
 </div>
-<button class="race-modal-close" data-race-modal-close="true" type="button" aria-label="Cerrar selector de pruebas">
-<span class="material-symbols-outlined">close</span>
+<button data-race-modal-close="true" type="button" aria-label="Cerrar" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:none;background:rgba(255,255,255,.15);color:#fff;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.3)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+<span class="material-symbols-outlined" style="font-size:20px;">close</span>
 </button>
 </div>
-<div class="race-modal-body">
-<p class="text-sm text-on-surface-variant mb-4">Selecciona una de las cuatro pruebas del circuito.</p>
-<div class="race-modal-grid">
-<a class="race-modal-link" href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">11 Jul 2026</p>
-<p class="text-lg font-black text-primary">Balanegra</p>
-<p class="text-xs text-on-surface-variant mt-1">Playa de Balanegra</p>
+<div style="padding:1.25rem 1.5rem;overflow-y:auto;flex:1;">
+<p style="margin:0 0 1rem;font-size:.85rem;color:#5f6368;">Selecciona una de las cuatro pruebas del circuito.</p>
+<div style="display:grid;grid-template-columns:1fr;gap:.75rem;" class="sm:!grid-cols-2" id="race-grid">
+<a href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">11 Jul 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Balanegra</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Playa de Balanegra</p>
 </a>
-<a class="race-modal-link" href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">25 Jul 2026</p>
-<p class="text-lg font-black text-primary">Cuevas de Almanzora</p>
-<p class="text-xs text-on-surface-variant mt-1">Canal de Remo</p>
+<a href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">25 Jul 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Cuevas de Almanzora</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Canal de Remo</p>
 </a>
-<a class="race-modal-link" href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">01 Ago 2026</p>
-<p class="text-lg font-black text-primary">Garrucha</p>
-<p class="text-xs text-on-surface-variant mt-1">Puerto de Garrucha</p>
+<a href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">01 Ago 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Garrucha</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Puerto de Garrucha</p>
 </a>
-<a class="race-modal-link" href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">22 Ago 2026</p>
-<p class="text-lg font-black text-primary">Almería</p>
-<p class="text-xs text-on-surface-variant mt-1">Playa de las Palmeras</p>
+<a href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">22 Ago 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Almería</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Playa de las Palmeras</p>
 </a>
+</div>
 </div>
 </div>
 </div>
@@ -596,7 +534,7 @@
 </section>
 <section class="fixed inset-0 z-[120] hidden" data-cookie-panel="modal" role="dialog" aria-modal="true" aria-label="Preferencias de cookies">
 <div class="absolute inset-0 bg-slate-900/60" data-cookie-close="true"></div>
-<div class="relative max-w-2xl mx-auto mt-16 bg-white rounded-2xl shadow-2xl p-8">
+<div class="relative max-w-2xl mx-auto mt-8 sm:mt-16 bg-white rounded-2xl shadow-2xl p-5 sm:p-8 max-h-[90vh] overflow-y-auto">
 <h3 class="text-2xl font-black text-on-surface mb-3">Preferencias de cookies</h3>
 <p class="text-sm text-on-surface-variant mb-6">Actualmente solo usamos almacenamiento tecnico necesario.</p>
 <div class="space-y-4">
@@ -616,8 +554,8 @@
 </section>
 <!-- Footer -->
 <footer class="bg-surface-container-low w-full border-t border-outline-variant/20">
-<div class="max-w-7xl mx-auto px-6 md:px-8 py-16">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+<div class="max-w-7xl mx-auto px-5 md:px-8 py-10 md:py-16">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Brand -->
 <div>
 <div class="font-black text-primary text-2xl font-headline tracking-tight italic mb-4">
@@ -645,7 +583,7 @@
 </div>
 </div>
 </div>
-<div class="mt-12 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row items-center justify-between gap-4">
 <p class="text-on-surface-variant text-xs font-headline tracking-wider">© 2026 Diputación de Almería</p>
 <div class="flex items-center gap-1 text-on-surface-variant text-xs">
 <span class="material-symbols-outlined text-primary text-sm">waves</span>
@@ -800,7 +738,7 @@
         var raceLinks = modal.querySelectorAll('[data-race-link="true"]');
 
         function openModal() {
-            modal.style.display = 'flex';
+            modal.style.display = 'block';
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }

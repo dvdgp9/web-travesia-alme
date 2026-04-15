@@ -81,10 +81,13 @@
             pointer-events: auto;
         }
         .race-modal-backdrop {
-            position: fixed;
+            position: absolute;
             inset: 0;
-            background: rgba(15, 23, 42, 0.6);
-            z-index: 125;
+            background: rgba(15, 23, 42, 0.55);
+        }
+        .race-modal-content {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
@@ -471,37 +474,54 @@
 </div>
 </section>
 </main>
-<section class="fixed inset-0 z-[130] hidden" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única">
+<section class="fixed inset-0 z-[130] hidden flex items-center justify-center p-4" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única">
 <div class="race-modal-backdrop" data-race-modal-close="true"></div>
-<div class="relative max-w-3xl mx-auto mt-10 md:mt-16 bg-white rounded-2xl shadow-2xl p-6 md:p-8">
-<div class="flex items-center justify-between mb-4">
-<h3 class="text-2xl font-black text-on-surface">Elegir mi prueba</h3>
-<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" data-race-modal-close="true" type="button" aria-label="Cerrar selector de pruebas">
+<div class="race-modal-content w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+<div class="bg-primary px-6 py-5 md:px-8 md:py-6 flex items-center justify-between">
+<div>
+<h3 class="text-xl md:text-2xl font-black text-white">Elegir mi prueba</h3>
+<p class="text-sm text-white/70 mt-1">Inscripción individual · 15 €</p>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" data-race-modal-close="true" type="button" aria-label="Cerrar selector de pruebas">
 <span class="material-symbols-outlined">close</span>
 </button>
 </div>
-<p class="text-sm text-on-surface-variant mb-6">Selecciona una de las cuatro pruebas del circuito para tu inscripción individual.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">11 Julio 2026</p>
-<p class="text-lg font-black text-primary">Balanegra</p>
-<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+<div class="p-5 md:p-8">
+<p class="text-sm text-on-surface-variant mb-5">Selecciona una de las cuatro pruebas del circuito.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">11 Jul 2026</p>
+</div>
+<p class="text-lg font-black text-on-surface group-hover:text-white">Balanegra</p>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Playa de Balanegra · 1500 m / 500 m</p>
 </a>
-<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">25 Julio 2026</p>
-<p class="text-lg font-black text-primary">Cuevas de Almanzora</p>
-<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">25 Jul 2026</p>
+</div>
+<p class="text-lg font-black text-on-surface group-hover:text-white">Cuevas de Almanzora</p>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Canal de Remo · 1500 m / 500 m</p>
 </a>
-<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">1 Agosto 2026</p>
-<p class="text-lg font-black text-primary">Garrucha</p>
-<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">01 Ago 2026</p>
+</div>
+<p class="text-lg font-black text-on-surface group-hover:text-white">Garrucha</p>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Puerto de Garrucha · 1500 m / 500 m</p>
 </a>
-<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">22 Agosto 2026</p>
-<p class="text-lg font-black text-primary">Almería</p>
-<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">22 Ago 2026</p>
+</div>
+<p class="text-lg font-black text-on-surface group-hover:text-white">Almería</p>
+<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Playa de las Palmeras · 1500 m / 500 m</p>
 </a>
+</div>
 </div>
 </div>
 </section>

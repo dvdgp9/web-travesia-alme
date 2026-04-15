@@ -474,53 +474,43 @@
 </div>
 </section>
 </main>
-<section class="fixed inset-0 z-[130] hidden flex items-center justify-center p-4" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única">
+<section class="fixed inset-0 z-[130] hidden" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única" style="display:none;">
 <div class="race-modal-backdrop" data-race-modal-close="true"></div>
-<div class="race-modal-content w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden">
-<div class="bg-primary px-6 py-5 md:px-8 md:py-6 flex items-center justify-between">
+<div class="race-modal-content" style="position:fixed;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding:1rem;pointer-events:none;">
+<div style="pointer-events:auto;width:100%;max-width:540px;max-height:calc(100vh - 2rem);display:flex;flex-direction:column;background:#fff;border-radius:1.25rem;box-shadow:0 25px 60px rgba(0,0,0,.25);overflow:hidden;">
+<div style="background:var(--md-sys-color-primary,#00586f);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
 <div>
-<h3 class="text-xl md:text-2xl font-black text-white">Elegir mi prueba</h3>
-<p class="text-sm text-white/70 mt-1">Inscripción individual · 15 €</p>
+<h3 style="margin:0;font-size:1.25rem;font-weight:900;color:#fff;font-family:'Lexend',sans-serif;">Elegir mi prueba</h3>
+<p style="margin:.25rem 0 0;font-size:.8rem;color:rgba(255,255,255,.65);">Inscripción individual · 15 €</p>
 </div>
-<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors" data-race-modal-close="true" type="button" aria-label="Cerrar selector de pruebas">
-<span class="material-symbols-outlined">close</span>
+<button data-race-modal-close="true" type="button" aria-label="Cerrar" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:none;background:rgba(255,255,255,.15);color:#fff;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.3)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+<span class="material-symbols-outlined" style="font-size:20px;">close</span>
 </button>
 </div>
-<div class="p-5 md:p-8">
-<p class="text-sm text-on-surface-variant mb-5">Selecciona una de las cuatro pruebas del circuito.</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
-<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">11 Jul 2026</p>
-</div>
-<p class="text-lg font-black text-on-surface group-hover:text-white">Balanegra</p>
-<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Playa de Balanegra · 1500 m / 500 m</p>
+<div style="padding:1.25rem 1.5rem;overflow-y:auto;flex:1;">
+<p style="margin:0 0 1rem;font-size:.85rem;color:#5f6368;">Selecciona una de las cuatro pruebas del circuito.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+<a href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">11 Jul 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Balanegra</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Playa de Balanegra</p>
 </a>
-<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
-<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">25 Jul 2026</p>
-</div>
-<p class="text-lg font-black text-on-surface group-hover:text-white">Cuevas de Almanzora</p>
-<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Canal de Remo · 1500 m / 500 m</p>
+<a href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">25 Jul 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Cuevas de Almanzora</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Canal de Remo</p>
 </a>
-<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
-<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">01 Ago 2026</p>
-</div>
-<p class="text-lg font-black text-on-surface group-hover:text-white">Garrucha</p>
-<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Puerto de Garrucha · 1500 m / 500 m</p>
+<a href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">01 Ago 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Garrucha</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Puerto de Garrucha</p>
 </a>
-<a class="group block p-5 rounded-2xl bg-surface-container hover:bg-primary-container transition-all duration-200" href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank">
-<div class="flex items-center gap-3 mb-2">
-<span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pool</span>
-<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant group-hover:text-white/80">22 Ago 2026</p>
-</div>
-<p class="text-lg font-black text-on-surface group-hover:text-white">Almería</p>
-<p class="text-xs text-on-surface-variant group-hover:text-white/70 mt-1">Playa de las Palmeras · 1500 m / 500 m</p>
+<a href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank" style="display:block;padding:1rem 1.1rem;border-radius:.875rem;background:#f4f8f9;text-decoration:none;transition:all .2s;color:inherit;" onmouseover="this.style.background='#e0f2f6';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#f4f8f9';this.style.transform='none'">
+<p style="margin:0 0 .35rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5f6368;">22 Ago 2026</p>
+<p style="margin:0;font-size:1.05rem;font-weight:900;color:#00586f;">Almería</p>
+<p style="margin:.3rem 0 0;font-size:.7rem;color:#8a9099;">Playa de las Palmeras</p>
 </a>
+</div>
 </div>
 </div>
 </div>
@@ -745,11 +735,13 @@
         var raceLinks = modal.querySelectorAll('[data-race-link="true"]');
 
         function openModal() {
+            modal.style.display = 'block';
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
+            modal.style.display = 'none';
             modal.classList.add('hidden');
             document.body.style.overflow = '';
         }
@@ -763,7 +755,7 @@
         });
 
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+            if (event.key === 'Escape' && modal.style.display !== 'none') closeModal();
         });
     })();
     </script>

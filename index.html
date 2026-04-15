@@ -80,6 +80,12 @@
             transform: translateY(0);
             pointer-events: auto;
         }
+        .race-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 125;
+        }
     </style>
 </head>
 <body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
@@ -269,6 +275,49 @@
 </div>
 </div>
 </section>
+<!-- Registration (Inscripciones) -->
+<section class="py-24 bg-surface" id="registration">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col items-center mb-16 text-center">
+<h2 class="text-4xl md:text-5xl font-black text-primary italic mb-6 fade-up">INSCRIPCIONES</h2>
+<p class="text-on-surface-variant max-w-2xl mb-8 fade-up">Reserva tu plaza y participa en la distancia que mejor se adapte a ti.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 stagger-children max-w-4xl mx-auto">
+<!-- Option 1 -->
+<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
+<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">PRUEBA ÚNICA</div>
+<div class="text-5xl font-black text-on-surface mb-2">15<span class="text-2xl">€</span></div>
+<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
+<p class="text-on-surface-variant text-sm mb-8 flex-1">Acceso a una de las travesías del circuito a elegir.</p>
+<button class="w-full py-3 rounded-full bg-primary text-on-primary font-bold text-sm uppercase tracking-wider hover:bg-primary-container transition-colors" data-race-modal-open="true" type="button">Elegir mi prueba</button>
+</div>
+<!-- Option 2 - Featured -->
+<div class="hover-lift fade-up bg-primary text-on-primary p-8 rounded-3xl shadow-2xl md:scale-105 relative overflow-hidden text-center flex flex-col">
+<div class="absolute top-4 right-4 rotate-12">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-black uppercase">RECOMENDADO</span>
+</div>
+<div class="text-sm font-bold text-primary-fixed mb-2 uppercase tracking-widest">TRAVESÍA COMPLETA</div>
+<div class="text-5xl font-black text-white mb-2">32<span class="text-2xl">€</span></div>
+<p class="text-xs text-primary-fixed mb-6">las 4 pruebas · ahorra 45%</p>
+<p class="text-primary-fixed text-sm mb-8 flex-1">Participación en las 4 pruebas de la travesía.</p>
+<a class="w-full py-3 rounded-full bg-white text-primary font-black text-sm uppercase tracking-wider hover:bg-white/90 transition-colors inline-flex items-center justify-center" href="https://www.global-tempo.com/carreras.php?id=3102" rel="noopener noreferrer" target="_blank">Inscribirse</a>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-3xl p-12 text-center max-w-4xl mx-auto">
+<h3 class="text-3xl font-black text-on-surface italic mb-4">¿LISTO PARA EL RETO?</h3>
+<p class="text-on-surface-variant mb-10 text-lg">Únete a cientos de nadadores en la travesía a nado más importante de la provincia de Almería.</p>
+<a class="inline-flex items-center gap-3 bg-primary-container text-white px-12 py-5 rounded-full text-xl font-black hover:shadow-2xl hover:shadow-primary/30 transition-all active:scale-95" href="https://www.global-tempo.com/carreras.php?id=3102" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined">how_to_reg</span>
+                        INSCRIBIRSE AHORA
+                    </a>
+<p class="text-on-surface-variant text-sm mt-6 max-w-2xl mx-auto">
+                        Antes de enviar tus datos en el proceso de inscripción, revisa la
+                        <a class="underline font-semibold text-primary" href="./politica-privacidad.html">Política de Privacidad</a>.
+                        Responsable del tratamiento: Ebone Servicios Educacion Deporte SL. Contacto: info@travesiadipalme.es.
+                    </p>
+</div>
+</div>
+</section>
 <!-- Categories & Prizes -->
 <section class="py-24 bg-surface" id="categories">
 <div class="max-w-7xl mx-auto px-8">
@@ -276,31 +325,66 @@
 <h2 class="text-4xl md:text-5xl font-black text-primary italic mb-4 fade-up">CATEGORÍAS Y PREMIOS</h2>
 <p class="text-on-surface-variant max-w-2xl mx-auto fade-up">Reconocimiento al esfuerzo y la excelencia técnica en todas las edades y capacidades.</p>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16 stagger-children">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16 stagger-children">
 <div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
 <div class="material-symbols-outlined text-4xl text-primary mb-3">child_care</div>
 <div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
 <div class="text-xl font-black text-primary-container">INFANTIL</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 2018–2014</p>
 </div>
 <div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
 <div class="material-symbols-outlined text-4xl text-primary mb-3">school</div>
 <div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
 <div class="text-xl font-black text-primary-container">JUNIOR</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 2013–2009</p>
 </div>
 <div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
 <div class="material-symbols-outlined text-4xl text-primary mb-3">sports_score</div>
 <div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
 <div class="text-xl font-black text-primary-container">SENIOR</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 2008–1997</p>
 </div>
 <div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
 <div class="material-symbols-outlined text-4xl text-primary mb-3">stars</div>
 <div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
-<div class="text-xl font-black text-primary-container">MASTER</div>
+<div class="text-xl font-black text-primary-container">MÁSTER 30</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 1996–1987</p>
 </div>
-<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center col-span-2 md:col-span-1">
-<div class="material-symbols-outlined text-4xl text-primary mb-3">accessible_forward</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">military_tech</div>
 <div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
-<div class="text-xl font-black text-primary-container">ADAPTADA</div>
+<div class="text-xl font-black text-primary-container">MÁSTER 40</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 1986–1977</p>
+</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">military_tech</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">MÁSTER 50</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 1976–1967</p>
+</div>
+<div class="hover-lift fade-up bg-surface-container-highest p-6 rounded-2xl text-center">
+<div class="material-symbols-outlined text-4xl text-primary mb-3">military_tech</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Categoría</div>
+<div class="text-xl font-black text-primary-container">MÁSTER 60</div>
+<p class="text-xs text-on-surface-variant mt-2">Años: 1966 en adelante</p>
+</div>
+<div class="hover-lift fade-up bg-primary-container text-white p-6 rounded-2xl text-center sm:col-span-2 lg:col-span-1">
+<div class="material-symbols-outlined text-4xl text-white mb-3">accessible_forward</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1 text-primary-fixed">Categoría</div>
+<div class="text-xl font-black">ADAPTADA 1</div>
+<p class="text-xs text-primary-fixed mt-2">Físicos</p>
+</div>
+<div class="hover-lift fade-up bg-primary text-white p-6 rounded-2xl text-center sm:col-span-2 lg:col-span-1">
+<div class="material-symbols-outlined text-4xl text-white mb-3">hearing_disabled</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1 text-primary-fixed">Categoría</div>
+<div class="text-xl font-black">ADAPTADA 2</div>
+<p class="text-xs text-primary-fixed mt-2">Sensoriales / Intelectuales</p>
+</div>
+<div class="hover-lift fade-up bg-tertiary text-on-tertiary p-6 rounded-2xl text-center sm:col-span-2 lg:col-span-2">
+<div class="material-symbols-outlined text-4xl mb-3">location_city</div>
+<div class="font-bold uppercase text-xs tracking-widest mb-1">Premios Locales</div>
+<div class="text-xl font-black">Absoluta masculina y femenina</div>
+<p class="text-xs mt-2">*Estos premios pueden ser acumulativos</p>
 </div>
 </div>
 <div class="bg-primary text-on-primary rounded-3xl p-10 flex flex-col md:flex-row items-center gap-12 overflow-hidden relative fade-up">
@@ -324,7 +408,7 @@
 <div class="w-full md:w-1/3 relative z-10">
 <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20">
 <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-primary-fixed">Importante</h4>
-<p class="text-sm text-white/80">Para optar a la clasificación general de la travesía es obligatorio haber participado en al menos 3 de las 4 pruebas programadas.</p>
+<p class="text-sm text-white/80">Para optar a la clasificación general de la travesía es obligatorio haber participado en al menos 2 de las 4 pruebas programadas.</p>
 </div>
 </div>
 </div>
@@ -348,7 +432,7 @@
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">badge</span>
 </div>
 <div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">10:45</div>
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">11:15</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Charla Técnica (Briefing)</h4>
@@ -357,22 +441,22 @@
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">record_voice_over</span>
 </div>
 <div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">11:00</div>
-<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
-<div class="flex-1">
-<h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía General</h4>
-<p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 1500 metros.</p>
-</div>
-<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">waves</span>
-</div>
-<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
-<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">12:30</div>
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">11:20</div>
 <div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
 <div class="flex-1">
 <h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía Infantil</h4>
 <p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 500 metros.</p>
 </div>
 <span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">pool</span>
+</div>
+<div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
+<div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">12:00</div>
+<div class="w-px h-10 bg-outline-variant/30 group-hover:bg-white/30"></div>
+<div class="flex-1">
+<h4 class="font-bold text-on-surface group-hover:text-white">Salida Travesía General</h4>
+<p class="text-sm text-on-surface-variant group-hover:text-white/80">Distancia 1500 metros.</p>
+</div>
+<span class="material-symbols-outlined text-primary/30 group-hover:text-white/40 text-3xl hidden md:block">waves</span>
 </div>
 <div class="flex items-center gap-6 bg-surface p-6 rounded-2xl group hover:bg-primary-container transition-all duration-300 fade-up">
 <div class="text-2xl font-black text-primary group-hover:text-white w-20 shrink-0 font-headline">13:30</div>
@@ -386,66 +470,41 @@
 </div>
 </div>
 </section>
-<!-- Registration (Inscripciones) -->
-<section class="py-24 bg-surface" id="registration">
-<div class="max-w-7xl mx-auto px-8">
-<div class="flex flex-col items-center mb-16 text-center">
-<h2 class="text-4xl md:text-5xl font-black text-primary italic mb-6 fade-up">INSCRIPCIONES</h2>
-<p class="text-on-surface-variant max-w-2xl mb-8 fade-up">Reserva tu plaza ahora. Los nadadores locales disfrutan de precios especiales. La participación está limitada por razones de seguridad.</p>
+</main>
+<section class="fixed inset-0 z-[130] hidden" id="race-modal" role="dialog" aria-modal="true" aria-label="Elegir prueba única">
+<div class="race-modal-backdrop" data-race-modal-close="true"></div>
+<div class="relative max-w-3xl mx-auto mt-10 md:mt-16 bg-white rounded-2xl shadow-2xl p-6 md:p-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-2xl font-black text-on-surface">Elegir mi prueba</h3>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors" data-race-modal-close="true" type="button" aria-label="Cerrar selector de pruebas">
+<span class="material-symbols-outlined">close</span>
+</button>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 stagger-children">
-<!-- Option 1 -->
-<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
-<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">PRUEBA ÚNICA</div>
-<div class="text-5xl font-black text-on-surface mb-2">15<span class="text-2xl">€</span></div>
-<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
-<p class="text-on-surface-variant text-sm mb-8 flex-1">Acceso a una de las travesías del circuito a elegir.</p>
-<button class="w-full py-3 rounded-full bg-primary text-on-primary font-bold text-sm uppercase tracking-wider hover:bg-primary-container transition-colors">Inscribirse</button>
-</div>
-<!-- Option 2 - Featured -->
-<div class="hover-lift fade-up bg-primary text-on-primary p-8 rounded-3xl shadow-2xl md:scale-105 relative overflow-hidden text-center flex flex-col">
-<div class="absolute top-4 right-4 rotate-12">
-<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-black uppercase">RECOMENDADO</span>
-</div>
-<div class="text-sm font-bold text-primary-fixed mb-2 uppercase tracking-widest">TRAVESÍA COMPLETA</div>
-<div class="text-5xl font-black text-white mb-2">32<span class="text-2xl">€</span></div>
-<p class="text-xs text-primary-fixed mb-6">las 4 pruebas · ahorra 45%</p>
-<p class="text-primary-fixed text-sm mb-8 flex-1">Participación en las 4 pruebas de la travesía.</p>
-<button class="w-full py-3 rounded-full bg-white text-primary font-black text-sm uppercase tracking-wider hover:bg-white/90 transition-colors">Inscribirse</button>
-</div>
-<!-- Option 3 -->
-<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
-<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">FUERA DE PLAZO</div>
-<div class="text-5xl font-black text-on-surface mb-2">25<span class="text-2xl">€</span></div>
-<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
-<p class="text-on-surface-variant text-sm mb-8 flex-1">Inscripciones realizadas en la última semana previa al evento.</p>
-<button class="w-full py-3 rounded-full bg-outline text-white font-bold text-sm uppercase tracking-wider hover:bg-on-surface-variant transition-colors">Inscribirse</button>
-</div>
-<!-- Option 4 -->
-<div class="hover-lift fade-up bg-surface-container p-8 rounded-3xl border border-transparent hover:border-primary-container transition-all text-center flex flex-col">
-<div class="text-sm font-bold text-primary mb-2 uppercase tracking-widest">NADADOR LOCAL</div>
-<div class="text-5xl font-black text-on-surface mb-2">8<span class="text-2xl">€</span></div>
-<p class="text-xs text-on-surface-variant mb-6">por prueba</p>
-<p class="text-on-surface-variant text-sm mb-8 flex-1">Precio especial para empadronados en el municipio de la prueba.</p>
-<button class="w-full py-3 rounded-full bg-secondary text-on-secondary font-bold text-sm uppercase tracking-wider hover:bg-secondary-container hover:text-on-secondary-container transition-colors">Inscribirse</button>
-</div>
-</div>
-<div class="bg-surface-container-high rounded-3xl p-12 text-center max-w-4xl mx-auto">
-<h3 class="text-3xl font-black text-on-surface italic mb-4">¿LISTO PARA EL RETO?</h3>
-<p class="text-on-surface-variant mb-10 text-lg">Únete a cientos de nadadores en la travesía a nado más importante de la provincia de Almería.</p>
-<a class="inline-flex items-center gap-3 bg-primary-container text-white px-12 py-5 rounded-full text-xl font-black hover:shadow-2xl hover:shadow-primary/30 transition-all active:scale-95" href="#">
-<span class="material-symbols-outlined">how_to_reg</span>
-                        INSCRIBIRSE AHORA
-                    </a>
-<p class="text-on-surface-variant text-sm mt-6 max-w-2xl mx-auto">
-                        Antes de enviar tus datos en el proceso de inscripción, revisa la
-                        <a class="underline font-semibold text-primary" href="./politica-privacidad.html">Política de Privacidad</a>.
-                        Responsable del tratamiento: Ebone Servicios Educacion Deporte SL. Contacto: it@ebone.es.
-                    </p>
+<p class="text-sm text-on-surface-variant mb-6">Selecciona una de las cuatro pruebas del circuito para tu inscripción individual.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3103" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">11 Julio 2026</p>
+<p class="text-lg font-black text-primary">Balanegra</p>
+<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+</a>
+<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3104" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">25 Julio 2026</p>
+<p class="text-lg font-black text-primary">Cuevas de Almanzora</p>
+<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+</a>
+<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3105" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">1 Agosto 2026</p>
+<p class="text-lg font-black text-primary">Garrucha</p>
+<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+</a>
+<a class="block p-5 rounded-2xl border border-outline-variant/40 hover:border-primary hover:bg-surface-container transition-colors" href="https://www.global-tempo.com/carreras.php?id=3106" data-race-link="true" rel="noopener noreferrer" target="_blank">
+<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-1">22 Agosto 2026</p>
+<p class="text-lg font-black text-primary">Almería</p>
+<p class="text-xs text-on-surface-variant mt-1">Inscripción prueba individual</p>
+</a>
 </div>
 </div>
 </section>
-</main>
 <div class="cookie-overlay hidden" data-cookie-panel="overlay"></div>
 <section class="fixed bottom-0 left-0 right-0 z-[110] bg-white border-t border-slate-200 shadow-2xl hidden" data-cookie-panel="banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
 <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
@@ -505,8 +564,8 @@
 <div>
 <h4 class="font-headline font-bold text-on-surface text-sm uppercase tracking-widest mb-4">Contacto</h4>
 <div class="flex flex-col gap-3">
-<a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="mailto:it@ebone.es">
-<span class="material-symbols-outlined text-lg">mail</span> it@ebone.es
+<a class="text-on-surface-variant text-sm hover:text-primary transition-colors flex items-center gap-2" href="mailto:info@travesiadipalme.es">
+<span class="material-symbols-outlined text-lg">mail</span> info@travesiadipalme.es
 </a>
 </div>
 </div>
@@ -653,6 +712,38 @@
         }, { passive: true });
         btn.addEventListener('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
+
+    // Single race modal
+    (function() {
+        var modal = document.getElementById('race-modal');
+        if (!modal) return;
+
+        var openBtn = document.querySelector('[data-race-modal-open="true"]');
+        var closeTriggers = modal.querySelectorAll('[data-race-modal-close="true"]');
+        var raceLinks = modal.querySelectorAll('[data-race-link="true"]');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        if (openBtn) openBtn.addEventListener('click', openModal);
+        closeTriggers.forEach(function(trigger) {
+            trigger.addEventListener('click', closeModal);
+        });
+        raceLinks.forEach(function(link) {
+            link.addEventListener('click', closeModal);
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
         });
     })();
     </script>

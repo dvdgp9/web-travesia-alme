@@ -33,10 +33,23 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 ## Project Status Board
 - [x] Análisis completo del proyecto
 - [x] Implementación de mejoras — esperando verificación del usuario
+- [x] Actualización de contenidos según normativa (inscripciones, categorías, premios, horarios, contacto) — esperando validación manual
 
 ## Executor's Feedback or Assistance Requests
-Ninguno por ahora.
+Se ha completado un bloque de cambios solicitado por negocio en la home (`index.html`):
+- Inscripciones movida más arriba (antes de Categorías) y simplificada a 2 opciones.
+- En "Prueba única" se abre modal "Elegir mi prueba" con 4 pruebas listadas y enlaces oficiales ya cargados.
+- Eliminadas opciones "Fuera de plazo" y "Nadador local" en tarifas.
+- Categorías alineadas con normativa (rangos de años añadidos + Adaptada 1/2 destacadas + bloque de locales acumulativos).
+- Premios actualizado a "2 de las 4".
+- Horarios actualizados a 11:15 (charla), 11:20 (infantil), 12:00 (general).
+- Contacto actualizado a `info@travesiadipalme.es`.
+- Botones de inscripción general conectados al enlace oficial de circuito completo.
+
+Pendiente del usuario/planner:
+- Validación manual visual en móvil/escritorio del modal y del nuevo orden de secciones.
 
 ## Lessons
 - No hay package.json; se necesita npx para ejecutar Tailwind CLI.
 - El CSS está pre-compilado en `assets/styles/site.css`.
+- En esta landing la sección `#registration` puede moverse sin romper navegación porque navbar y CTA usan anclas, no posiciones absolutas.

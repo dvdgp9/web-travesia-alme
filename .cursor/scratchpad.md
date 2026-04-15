@@ -45,9 +45,10 @@ Se ha completado un bloque de cambios solicitado por negocio en la home (`index.
 - Horarios actualizados a 11:15 (charla), 11:20 (infantil), 12:00 (general).
 - Contacto actualizado a `info@travesiadipalme.es`.
 - Botones de inscripción general conectados al enlace oficial de circuito completo.
+- Ronda de optimización móvil aplicada (hero, espaciados por sección, CTA principal, timeline de horarios y modal de pruebas con scroll interno + grid 1 columna en móvil).
 
 Pendiente del usuario/planner:
-- Validación manual visual en móvil/escritorio del modal y del nuevo orden de secciones.
+- Validación manual visual en móvil/escritorio de: hero, bloques de inscripción/categorías, timeline de horarios y modal de "Elegir mi prueba".
 
 ## Lessons
 - No hay package.json; se necesita npx para ejecutar Tailwind CLI.

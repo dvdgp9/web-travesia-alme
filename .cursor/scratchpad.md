@@ -34,6 +34,7 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [x] Análisis completo del proyecto
 - [x] Implementación de mejoras — esperando verificación del usuario
 - [x] Actualización de contenidos según normativa (inscripciones, categorías, premios, horarios, contacto) — esperando validación manual
+- [x] Ajuste responsive móvil (márgenes laterales + espaciado vertical + bloque categorías/premios)
 
 ## Executor's Feedback or Assistance Requests
 Se ha completado un bloque de cambios solicitado por negocio en la home (`index.html`):
@@ -48,8 +49,10 @@ Se ha completado un bloque de cambios solicitado por negocio en la home (`index.
 
 Pendiente del usuario/planner:
 - Validación manual visual en móvil/escritorio del modal y del nuevo orden de secciones.
+- Validación manual visual de espaciados en móvil (Hero, Categorías/Premios, Horarios, Footer y modal de cookies).
 
 ## Lessons
 - No hay package.json; se necesita npx para ejecutar Tailwind CLI.
 - El CSS está pre-compilado en `assets/styles/site.css`.
 - En esta landing la sección `#registration` puede moverse sin romper navegación porque navbar y CTA usan anclas, no posiciones absolutas.
+- Para móvil en esta web, `px-6` en contenedores principales evita sensación de "sin margen" en pantallas estrechas.

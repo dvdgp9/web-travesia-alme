@@ -35,8 +35,17 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [x] Implementación de mejoras — esperando verificación del usuario
 - [x] Actualización de contenidos según normativa (inscripciones, categorías, premios, horarios, contacto) — esperando validación manual
 - [x] Ajuste responsive móvil (márgenes laterales + espaciado vertical + bloque categorías/premios)
+- [ ] Aviso de cierre global de inscripciones implementado — pendiente validación visual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha añadido en `index.html`, dentro de la sección `#registration` y antes de las tarjetas de precio, un aviso visible indicando que todas las inscripciones se cierran el jueves a las 13:00 horas antes de la primera prueba. La ubicación elegida aplica tanto a "Prueba única" como a "Travesía completa", evitando que parezca un cierre solo de la primera prueba.
+
+Validación técnica realizada:
+- Confirmado con `rg` que el texto aparece en `index.html`.
+- Ejecutado `npm audit --audit-level=moderate`; aparece 1 vulnerabilidad moderada en `postcss <8.5.10` con fix disponible mediante `npm audit fix`. No se ha aplicado porque este cambio no requiere modificar dependencias.
+
+Solicito validación manual visual del usuario/planner para confirmar que el aviso se ve correctamente en móvil y escritorio antes de marcar el hito como completado.
+
 Se ha completado un bloque de cambios solicitado por negocio en la home (`index.html`):
 - Inscripciones movida más arriba (antes de Categorías) y simplificada a 2 opciones.
 - En "Prueba única" se abre modal "Elegir mi prueba" con 4 pruebas listadas y enlaces oficiales ya cargados.

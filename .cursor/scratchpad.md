@@ -38,7 +38,7 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [ ] Aviso de cierre global de inscripciones implementado — pendiente validación visual del usuario
 
 ## Executor's Feedback or Assistance Requests
-Se ha añadido en `index.html`, dentro de la sección `#registration` y antes de las tarjetas de precio, un aviso visible indicando que todas las inscripciones se cierran el jueves a las 13:00 horas antes de la primera prueba. La ubicación elegida aplica tanto a "Prueba única" como a "Travesía completa", evitando que parezca un cierre solo de la primera prueba.
+Se ha añadido en `index.html`, dentro de la sección `#registration` y antes de las tarjetas de precio, un aviso visible indicando que todas las inscripciones se cierran el jueves a las 13:00 horas antes de la prueba. También se ha añadido una segunda línea indicando que el día de la prueba se podrán realizar inscripciones con un coste de 25 €. La ubicación elegida aplica tanto a "Prueba única" como a "Travesía completa".
 
 Validación técnica realizada:
 - Confirmado con `rg` que el texto aparece en `index.html`.

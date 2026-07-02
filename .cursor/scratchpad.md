@@ -36,8 +36,15 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [x] Actualización de contenidos según normativa (inscripciones, categorías, premios, horarios, contacto) — esperando validación manual
 - [x] Ajuste responsive móvil (márgenes laterales + espaciado vertical + bloque categorías/premios)
 - [ ] Aviso de cierre global de inscripciones implementado — pendiente validación visual del usuario
+- [x] Corrección de nombre de sede: "Cuevas del Almanzora"
 
 ## Executor's Feedback or Assistance Requests
+Se ha completado el cambio puntual solicitado: reemplazar "Cuevas de Almanzora" por "Cuevas del Almanzora" en `index.html`.
+
+Validación técnica realizada:
+- Confirmado con `rg` que `index.html` contiene 2 apariciones de "Cuevas del Almanzora".
+- Confirmado con `rg` que ya no quedan apariciones de "Cuevas de Almanzora" ni "Cuevas de almanzora" en `index.html`.
+
 Se ha añadido en `index.html`, dentro de la sección `#registration` y antes de las tarjetas de precio, un aviso visible indicando que todas las inscripciones se cierran el jueves a las 13:00 horas antes de la prueba. También se ha añadido una segunda línea indicando que el día de la prueba se podrán realizar inscripciones con un coste de 25 €. La ubicación elegida aplica tanto a "Prueba única" como a "Travesía completa".
 
 Validación técnica realizada:

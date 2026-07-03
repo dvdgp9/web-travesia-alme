@@ -37,8 +37,18 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [x] Ajuste responsive móvil (márgenes laterales + espaciado vertical + bloque categorías/premios)
 - [ ] Aviso de cierre global de inscripciones implementado — pendiente validación visual del usuario
 - [x] Corrección de nombre de sede: "Cuevas del Almanzora"
+- [ ] Botón de resultados de Balanegra añadido — pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha añadido un botón "Ver resultados" en la tarjeta de Balanegra del calendario (`index.html`). El botón abre en nueva pestaña el enlace de Global Tempo facilitado por el usuario:
+`https://ww.global-tempo.com/resultados/G-Live/g-live.html?f=../2026/07_04_TRV_BALANEGRA_26/07_04_TRV_BALANEGRA_26.clax`
+
+Validación técnica realizada:
+- Confirmado con `rg` que el enlace aparece en `index.html`.
+- Confirmado que se ha usado `rel="noopener"` junto con `target="_blank"`.
+
+Solicito validación manual visual del usuario/planner para confirmar que la posición del botón en la tarjeta de Balanegra es correcta antes de marcar el hito como completado.
+
 Se ha completado el cambio puntual solicitado: reemplazar "Cuevas de Almanzora" por "Cuevas del Almanzora" en `index.html`.
 
 Validación técnica realizada:

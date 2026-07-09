@@ -38,8 +38,21 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [ ] Aviso de cierre global de inscripciones implementado — pendiente validación visual del usuario
 - [x] Corrección de nombre de sede: "Cuevas del Almanzora"
 - [ ] Botón de resultados de Balanegra añadido — pendiente validación manual del usuario
+- [ ] Ajustes de Balanegra y categoría promoción añadidos — pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se han aplicado dos cambios puntuales solicitados:
+- En la categoría Promoción se ha añadido el texto "NO COMPETITIVA".
+- Debajo del botón "Ver resultados" de Balanegra se ha añadido el botón "Galería fotográfica" con enlace a Global Tempo:
+`https://www.global-tempo.com/galerias.php?id=2513`
+
+Validación técnica realizada:
+- Confirmado con `rg` que "NO COMPETITIVA" aparece en `index.html`.
+- Confirmado con `rg` que el enlace de galería aparece en `index.html`.
+- Confirmado que el enlace externo usa `rel="noopener"` junto con `target="_blank"`.
+
+Solicito validación manual visual del usuario/planner para confirmar que el botón de galería se ve correctamente justo debajo de resultados y que el texto de Promoción queda bien en móvil y escritorio.
+
 Se ha añadido un botón "Ver resultados" en la tarjeta de Balanegra del calendario (`index.html`). El botón abre en nueva pestaña el enlace de Global Tempo facilitado por el usuario:
 `https://ww.global-tempo.com/resultados/G-Live/g-live.html?f=../2026/07_04_TRV_BALANEGRA_26/07_04_TRV_BALANEGRA_26.clax`
 

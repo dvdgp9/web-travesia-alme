@@ -5,6 +5,8 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 
 El usuario solicita añadir a la tarjeta de Cuevas del Almanzora un botón que abra los resultados oficiales de Global Tempo de la prueba del 25 de julio de 2026.
 
+El usuario solicita también añadir a esa tarjeta un botón "Cómo llegar" enlazado a la ubicación de Google facilitada.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -42,8 +44,18 @@ El usuario solicita añadir a la tarjeta de Cuevas del Almanzora un botón que a
 - [ ] Botón de resultados de Balanegra añadido — pendiente validación manual del usuario
 - [ ] Ajustes de Balanegra y categoría promoción añadidos — pendiente validación manual del usuario
 - [ ] Botón de resultados de Cuevas del Almanzora añadido — pendiente validación manual del usuario
+- [ ] Botón "Cómo llegar" de Cuevas del Almanzora añadido — pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha añadido un botón "Cómo llegar" debajo de "Ver resultados" en la tarjeta de Cuevas del Almanzora (`index.html`). Utiliza el icono `directions` y abre en una pestaña nueva el enlace facilitado:
+`https://share.google/garPq8UqZQZS1p5KY`
+
+Validación técnica realizada:
+- El enlace redirige con respuesta `HTTP 302` a Google y el destino responde `HTTP 200`.
+- El enlace externo usa `rel="noopener"` junto con `target="_blank"`.
+
+Solicito validación manual visual y funcional del usuario/planner antes de marcar el hito como completado.
+
 Se ha añadido un botón "Ver resultados" en la tarjeta de Cuevas del Almanzora del calendario (`index.html`). El botón abre en una pestaña nueva el enlace de Global Tempo facilitado por el usuario:
 `https://ww.global-tempo.com/resultados/G-Live/g-live.html?f=../2026/07_25_TRV_ALMANZORA_26/07_25_TRV_ALMANZORA_26.clax`
 

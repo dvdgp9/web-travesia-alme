@@ -7,6 +7,8 @@ El usuario solicita añadir a la tarjeta de Cuevas del Almanzora un botón que a
 
 El usuario solicita también añadir a esa tarjeta un botón "Cómo llegar" enlazado a la ubicación de Google facilitada.
 
+El usuario solicita añadir dos galerías de Cuevas del Almanzora ("Fotos de previa y salida" y "Meta") y reorganizar todas las acciones para minimizar el espacio ocupado.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -45,8 +47,25 @@ El usuario solicita también añadir a esa tarjeta un botón "Cómo llegar" enla
 - [ ] Ajustes de Balanegra y categoría promoción añadidos — pendiente validación manual del usuario
 - [ ] Botón de resultados de Cuevas del Almanzora añadido — pendiente validación manual del usuario
 - [ ] Botón "Cómo llegar" de Cuevas del Almanzora añadido — pendiente validación manual del usuario
+- [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se han añadido a la tarjeta de Cuevas del Almanzora dos accesos de galería:
+- "Previa y salida": `https://www.global-tempo.com/galerias.php?id=2538`
+- "Meta": `https://www.global-tempo.com/galerias.php?id=2540`
+
+Para evitar que la tarjeta crezca demasiado, las cuatro acciones ("Resultados", "Cómo llegar", "Previa y salida" y "Meta") se han reorganizado como una botonera compacta en cuadrícula 2×2, con menor espaciado y etiquetas breves. Una primera prueba con `flex-wrap` ocupaba 172 px al colocar cada botón en su propia fila; se descartó tras la validación visual. Los enlaces de las fotos conservan descripciones accesibles completas mediante `aria-label`.
+
+Validación técnica realizada:
+- Ambas galerías responden `HTTP 200 OK`.
+- Todos los enlaces externos usan `rel="noopener"` junto con `target="_blank"`.
+- Se ha regenerado `assets/styles/site.css` para incluir las utilidades Tailwind de la cuadrícula compacta.
+- Se ha añadido `?v=20260724` a la referencia de `site.css` en `index.html` para evitar que navegadores con la versión anterior en caché sigan mostrando la botonera en una sola columna.
+- Validación visual responsive realizada: botonera 2×2 de 100 px de alto a 1280×900 y 84 px a 390×844, sin desbordamiento propio ni desbordamiento horizontal de la página en móvil.
+- Ejecutado `npm audit --audit-level=moderate`: continúa existiendo 1 vulnerabilidad alta en `postcss <=8.5.11`. No se han modificado dependencias porque la tarea solo afecta al HTML.
+
+Solicito validación manual visual en móvil y escritorio antes de marcar el hito como completado.
+
 Se ha añadido un botón "Cómo llegar" debajo de "Ver resultados" en la tarjeta de Cuevas del Almanzora (`index.html`). Utiliza el icono `directions` y abre en una pestaña nueva el enlace facilitado:
 `https://share.google/garPq8UqZQZS1p5KY`
 

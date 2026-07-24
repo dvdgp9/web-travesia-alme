@@ -3,6 +3,8 @@
 ## Background and Motivation
 El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provincial de Travesías a Nado 2026 (Diputación de Almería). Es una web estática con Tailwind CSS pre-compilado, fuentes locales (Lexend + Manrope), y Material Symbols.
 
+El usuario solicita añadir a la tarjeta de Cuevas del Almanzora un botón que abra los resultados oficiales de Global Tempo de la prueba del 25 de julio de 2026.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -39,8 +41,20 @@ El usuario quiere mejorar la interfaz y el estilo de la web del Circuito Provinc
 - [x] Corrección de nombre de sede: "Cuevas del Almanzora"
 - [ ] Botón de resultados de Balanegra añadido — pendiente validación manual del usuario
 - [ ] Ajustes de Balanegra y categoría promoción añadidos — pendiente validación manual del usuario
+- [ ] Botón de resultados de Cuevas del Almanzora añadido — pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha añadido un botón "Ver resultados" en la tarjeta de Cuevas del Almanzora del calendario (`index.html`). El botón abre en una pestaña nueva el enlace de Global Tempo facilitado por el usuario:
+`https://ww.global-tempo.com/resultados/G-Live/g-live.html?f=../2026/07_25_TRV_ALMANZORA_26/07_25_TRV_ALMANZORA_26.clax`
+
+Validación técnica realizada:
+- El enlace externo usa `rel="noopener"` junto con `target="_blank"`.
+- La comprobación web inicial no pudo abrir la URL porque rechazó como insegura la ruta relativa incluida en el parámetro `f`; una comprobación directa posterior con `curl` confirmó respuesta `HTTP 200 OK`.
+- `git diff --check` no detectó errores de formato.
+- Ejecutado `npm audit --audit-level=moderate`: existe 1 vulnerabilidad alta en `postcss <=8.5.11`, con corrección disponible mediante `npm audit fix`. No se ha modificado ninguna dependencia porque este cambio solo afecta al HTML.
+
+Solicito validación manual visual y funcional del usuario/planner para confirmar la posición, apariencia y apertura del botón antes de marcar el hito como completado.
+
 Se han aplicado dos cambios puntuales solicitados:
 - En la categoría Promoción se ha añadido el texto "NO COMPETITIVA".
 - Debajo del botón "Ver resultados" de Balanegra se ha añadido el botón "Galería fotográfica" con enlace a Global Tempo:

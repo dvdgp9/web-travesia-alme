@@ -9,6 +9,8 @@ El usuario solicita también añadir a esa tarjeta un botón "Cómo llegar" enla
 
 El usuario solicita añadir dos galerías de Cuevas del Almanzora ("Fotos de previa y salida" y "Meta") y reorganizar todas las acciones para minimizar el espacio ocupado.
 
+El usuario solicita igualar los cuatro botones compactos al color del botón "Resultados" y usar el icono de cámara en los dos accesos de galería.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -50,6 +52,13 @@ El usuario solicita añadir dos galerías de Cuevas del Almanzora ("Fotos de pre
 - [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha uniformado la botonera compacta de Cuevas del Almanzora:
+- Los cuatro botones usan `bg-tertiary`, texto blanco y el mismo estado hover que "Resultados".
+- "Previa y salida" y "Meta" usan ambos el icono `photo_camera`.
+- Se conserva la cuadrícula 2×2 y sus dimensiones responsive ya validadas.
+
+Solicito validación manual visual del usuario/planner antes de marcar el hito como completado.
+
 Se han añadido a la tarjeta de Cuevas del Almanzora dos accesos de galería:
 - "Previa y salida": `https://www.global-tempo.com/galerias.php?id=2538`
 - "Meta": `https://www.global-tempo.com/galerias.php?id=2540`

@@ -11,6 +11,8 @@ El usuario solicita añadir dos galerías de Cuevas del Almanzora ("Fotos de pre
 
 El usuario solicita igualar los cuatro botones compactos al color del botón "Resultados" y usar el icono de cámara en los dos accesos de galería.
 
+El usuario solicita actualizar la tarjeta de Garrucha con accesos a resultados, ubicación y dos galerías, y mostrar debajo de la botonera el orden de las cinco tandas de salida facilitado en una captura.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -50,12 +52,33 @@ El usuario solicita igualar los cuatro botones compactos al color del botón "Re
 - [ ] Botón de resultados de Cuevas del Almanzora añadido — pendiente validación manual del usuario
 - [ ] Botón "Cómo llegar" de Cuevas del Almanzora añadido — pendiente validación manual del usuario
 - [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
+- [ ] Enlaces y orden de tandas de Garrucha añadidos — validación técnica superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha preparado la actualización de la tarjeta de Garrucha con una botonera compacta 2×2 para resultados, ubicación, fotos de previa/salida y fotos de meta. Debajo se ha incorporado como texto el orden de las cinco tandas de salida indicado por el usuario.
+
+Validación técnica realizada:
+- Los cuatro destinos facilitados responden `HTTP 200 OK`, incluida la redirección de Google Maps.
+- Confirmados 4 enlaces dentro del card de Garrucha, todos con `target="_blank"` y `rel="noopener"`.
+- Confirmadas las 5 tandas y su orden mediante análisis estructural del HTML.
+- Regenerado `assets/styles/site.css` con Tailwind y actualizado el parámetro de caché a `?v=20260807`.
+- Validación visual en 1280×900 y 390×844: botonera 2×2 legible, bloque de tandas contenido en la tarjeta y sin desbordamiento horizontal de la página.
+- La consola del navegador no registra errores ni avisos en la página local.
+- `git diff --check` no detectó errores antes del ajuste final de caché.
+- `npm audit --audit-level=moderate` informa de 1 vulnerabilidad alta conocida en `postcss <=8.5.22`; no se han modificado dependencias porque esta tarea solo afecta al contenido y estilos compilados.
+
+Solicito validación manual visual y funcional del usuario/planner antes de marcar el hito como completado.
+
 Se ha uniformado la botonera compacta de Cuevas del Almanzora:
 - Los cuatro botones usan `bg-tertiary`, texto blanco y el mismo estado hover que "Resultados".
 - "Previa y salida" y "Meta" usan ambos el icono `photo_camera`.
 - Se conserva la cuadrícula 2×2 y sus dimensiones responsive ya validadas.
+
+Validación técnica realizada:
+- Confirmados 4 botones con clases de color y hover idénticas.
+- Confirmados 2 iconos `photo_camera` en los enlaces de galería.
+- `git diff --check` no detectó errores.
+- `npm audit --audit-level=moderate` mantiene 1 vulnerabilidad alta conocida en `postcss <=8.5.11`; no se han modificado dependencias.
 
 Solicito validación manual visual del usuario/planner antes de marcar el hito como completado.
 

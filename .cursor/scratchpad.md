@@ -57,6 +57,8 @@ El usuario solicita actualizar la tarjeta de Garrucha con accesos a resultados, 
 ## Executor's Feedback or Assistance Requests
 Se ha preparado la actualización de la tarjeta de Garrucha con una botonera compacta 2×2 para resultados, ubicación, fotos de previa/salida y fotos de meta. Debajo se ha incorporado como texto el orden de las cinco tandas de salida indicado por el usuario.
 
+Por indicación posterior del usuario, la carrera 5 incluye también `Master 30`, después de `Master 40`.
+
 Validación técnica realizada:
 - Los cuatro destinos facilitados responden `HTTP 200 OK`, incluida la redirección de Google Maps.
 - Confirmados 4 enlaces dentro del card de Garrucha, todos con `target="_blank"` y `rel="noopener"`.

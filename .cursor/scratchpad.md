@@ -15,6 +15,8 @@ El usuario solicita actualizar la tarjeta de Garrucha con accesos a resultados, 
 
 El usuario solicita sustituir la galería de meta de Garrucha, añadir una galería de entrega de premios y agregar el enlace "Cómo llegar" a la tarjeta de Almería.
 
+El usuario solicita añadir bajo "Requisitos y distancias" una nueva sección con el sistema de puntuación del circuito, el requisito de participar en al menos 2 de las 4 sedes y un botón gris, todavía sin enlace, para la futura clasificación general.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -56,8 +58,21 @@ El usuario solicita sustituir la galería de meta de Garrucha, añadir una galer
 - [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
 - [ ] Enlaces y orden de tandas de Garrucha añadidos — validación técnica superada; pendiente validación manual del usuario
 - [ ] Meta y entrega de premios de Garrucha + ubicación de Almería — validación técnica superada; pendiente validación manual del usuario
+- [ ] Sistema de puntuación y acceso futuro a clasificación general — validación técnica superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha añadido bajo "Requisitos y distancias" una sección específica para el sistema de puntuación. Incluye la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes y un botón deshabilitado para la futura clasificación general.
+
+Validación técnica realizada:
+- La sección está ubicada dentro de `#info`, después del contenido de requisitos y antes de Inscripciones.
+- El título está asociado mediante `aria-labelledby` y el botón usa `disabled` junto con `aria-disabled="true"`, sin `href` ni URL provisional.
+- Confirmados la escala de puntos, el mínimo de 2 sedes y la explicación del valor estable de 2 puntos.
+- Tailwind se ha recompilado y la versión de caché se ha actualizado a `?v=20260810-2`.
+- `git diff --check` no detecta errores de formato.
+- `npm audit --audit-level=moderate` mantiene 2 vulnerabilidades altas conocidas en `nanoid <=3.3.16` y `postcss <=8.5.22`; no se han modificado dependencias.
+
+La composición sigue una jerarquía asimétrica: requisito mínimo destacado a la izquierda y explicación/escala a la derecha, con colapso a una sola columna en móvil. Solicito validación manual visual del usuario/planner antes de marcar el hito como completado.
+
 Se ha actualizado la galería de meta de Garrucha al identificador `2564`, se ha añadido la galería "Entrega de premios" (`2565`) como quinto botón a ancho completo y se ha incorporado "Cómo llegar" a la tarjeta de Almería.
 
 Validación técnica realizada:

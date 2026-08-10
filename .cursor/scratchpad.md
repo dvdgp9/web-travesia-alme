@@ -13,6 +13,8 @@ El usuario solicita igualar los cuatro botones compactos al color del botón "Re
 
 El usuario solicita actualizar la tarjeta de Garrucha con accesos a resultados, ubicación y dos galerías, y mostrar debajo de la botonera el orden de las cinco tandas de salida facilitado en una captura.
 
+El usuario solicita sustituir la galería de meta de Garrucha, añadir una galería de entrega de premios y agregar el enlace "Cómo llegar" a la tarjeta de Almería.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -53,8 +55,21 @@ El usuario solicita actualizar la tarjeta de Garrucha con accesos a resultados, 
 - [ ] Botón "Cómo llegar" de Cuevas del Almanzora añadido — pendiente validación manual del usuario
 - [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
 - [ ] Enlaces y orden de tandas de Garrucha añadidos — validación técnica superada; pendiente validación manual del usuario
+- [ ] Meta y entrega de premios de Garrucha + ubicación de Almería — validación técnica superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha actualizado la galería de meta de Garrucha al identificador `2564`, se ha añadido la galería "Entrega de premios" (`2565`) como quinto botón a ancho completo y se ha incorporado "Cómo llegar" a la tarjeta de Almería.
+
+Validación técnica realizada:
+- Los dos enlaces de galería y el enlace de Google Maps responden `HTTP 200 OK` siguiendo sus redirecciones.
+- El enlace anterior de meta (`2554`) ya no aparece en `index.html`.
+- Los tres enlaces nuevos están dentro de sus tarjetas correctas y usan `target="_blank"` con `rel="noopener"`.
+- Tailwind se ha recompilado y contiene la utilidad `col-span-2`; la versión de caché de `site.css` se ha actualizado a `?v=20260810`.
+- `git diff --check` no detecta errores de formato.
+- `npm audit --audit-level=moderate` informa de 2 vulnerabilidades altas en `nanoid <=3.3.16` y `postcss <=8.5.22`; no se han modificado dependencias porque quedan fuera del alcance de esta tarea.
+
+Solicito validación manual visual y funcional del usuario/planner antes de marcar el hito como completado.
+
 Se ha preparado la actualización de la tarjeta de Garrucha con una botonera compacta 2×2 para resultados, ubicación, fotos de previa/salida y fotos de meta. Debajo se ha incorporado como texto el orden de las cinco tandas de salida indicado por el usuario.
 
 Por indicación posterior del usuario, la carrera 5 incluye también `Master 30`, después de `Master 40`.

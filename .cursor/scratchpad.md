@@ -61,7 +61,7 @@ El usuario solicita añadir bajo "Requisitos y distancias" una nueva sección co
 - [ ] Sistema de puntuación y acceso futuro a clasificación general — validación técnica superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
-La sección del sistema de puntuación se ha recolocado por indicación del usuario para que aparezca sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes y un botón deshabilitado para la futura clasificación general.
+La sección del sistema de puntuación se ha recolocado por indicación del usuario para que aparezca sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes, la indicación "Premios no acumulables" y un botón deshabilitado para la futura clasificación general.
 
 Validación técnica realizada:
 - La sección está ubicada dentro de `#info`, antes del contenido de "Requisitos y distancias".

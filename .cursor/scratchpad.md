@@ -58,16 +58,17 @@ El usuario solicita añadir bajo "Requisitos y distancias" una nueva sección co
 - [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
 - [ ] Enlaces y orden de tandas de Garrucha añadidos — validación técnica superada; pendiente validación manual del usuario
 - [ ] Meta y entrega de premios de Garrucha + ubicación de Almería — validación técnica superada; pendiente validación manual del usuario
-- [ ] Sistema de puntuación y acceso futuro a clasificación general — validación técnica superada; pendiente validación manual del usuario
+- [ ] Sistema de puntuación y accesos a clasificaciones globales de 1500 m — validación técnica superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
-La sección del sistema de puntuación se ha recolocado por indicación del usuario para que aparezca sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes, la indicación "Premios no acumulables" y un botón deshabilitado para la futura clasificación general.
+La sección del sistema de puntuación aparece sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes y la indicación "Premios no acumulables". El botón provisional deshabilitado ha sido sustituido por dos accesos activos de 1500 metros: clasificación por categorías y clasificación general.
 
 Validación técnica realizada:
 - La sección está ubicada dentro de `#info`, antes del contenido de "Requisitos y distancias".
-- El título está asociado mediante `aria-labelledby` y el botón usa `disabled` junto con `aria-disabled="true"`, sin `href` ni URL provisional.
+- El título está asociado mediante `aria-labelledby`; los dos accesos a clasificaciones abren Global Tempo en una pestaña nueva con `rel="noopener"`.
 - Confirmados la escala de puntos, el mínimo de 2 sedes y la explicación del valor estable de 2 puntos.
-- Tailwind se ha recompilado tras recolocar el bloque y la versión de caché se ha actualizado a `?v=20260810-3`.
+- Ambos enlaces de clasificación responden `HTTP 200 OK`; sus textos visibles indican expresamente `1500 m`.
+- Tailwind se ha recompilado y la versión de caché se ha actualizado a `?v=20260811`.
 - `git diff --check` no detecta errores de formato.
 - `npm audit --audit-level=moderate` mantiene 2 vulnerabilidades altas conocidas en `nanoid <=3.3.16` y `postcss <=8.5.22`; no se han modificado dependencias.
 

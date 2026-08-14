@@ -17,6 +17,8 @@ El usuario solicita sustituir la galería de meta de Garrucha, añadir una galer
 
 El usuario solicita añadir bajo "Requisitos y distancias" una nueva sección con el sistema de puntuación del circuito, el requisito de participar en al menos 2 de las 4 sedes y un botón gris, todavía sin enlace, para la futura clasificación general.
 
+El usuario solicita ampliar las clasificaciones del circuito con Adaptada 1 y Adaptada 2 de 1500 m, además de Infantil y Adaptada infantil de 500 m, integrándolas con una interfaz clara junto a los resultados globales existentes.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -58,10 +60,22 @@ El usuario solicita añadir bajo "Requisitos y distancias" una nueva sección co
 - [ ] Galerías y botonera compacta de Cuevas del Almanzora añadidas — pendiente validación manual del usuario
 - [ ] Enlaces y orden de tandas de Garrucha añadidos — validación técnica superada; pendiente validación manual del usuario
 - [ ] Meta y entrega de premios de Garrucha + ubicación de Almería — validación técnica superada; pendiente validación manual del usuario
-- [ ] Sistema de puntuación y accesos a clasificaciones globales de 1500 m — validación técnica superada; pendiente validación manual del usuario
+- [ ] Sistema de puntuación y centro de 6 clasificaciones de 1500/500 m — validación técnica y visual superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
-La sección del sistema de puntuación aparece sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes y la indicación "Premios no acumulables". El botón provisional deshabilitado ha sido sustituido por dos accesos activos de 1500 metros: clasificación por categorías y clasificación general.
+La sección del sistema de puntuación aparece sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes y la indicación "Premios no acumulables". Los accesos se han reorganizado como un centro de clasificaciones con dos grupos: cuatro resultados de 1500 m y dos resultados infantiles de 500 m.
+
+Validación de la ampliación de clasificaciones:
+- Los 6 enlaces de Global Tempo responden `HTTP 200 OK`.
+- El grupo de 1500 m contiene General, Categorías, Adaptada 1 y Adaptada 2; el grupo de 500 m contiene Infantil y Adaptada infantil.
+- Todos los enlaces usan `target="_blank"` y `rel="noopener"`.
+- Tailwind se ha recompilado y la versión de caché se ha actualizado a `?v=20260814`.
+- Validación visual en 1280×1000: composición asimétrica 3/2, etiquetas legibles y filas de acceso de 48 px.
+- Validación responsive en 390×844: ambos grupos se apilan a 342 px de ancho, los 6 accesos mantienen 48 px de alto y no existe desbordamiento horizontal.
+- La consola del navegador no registra errores ni avisos y `git diff --check` no detecta errores de formato.
+- `npm audit --audit-level=moderate` mantiene 2 vulnerabilidades altas conocidas en `nanoid <=3.3.17` y `postcss <=8.5.22`; no se han modificado dependencias.
+
+La skill de diseño frontend orientó la agrupación por distancia y la jerarquía 3/2, evitando una lista plana de seis botones. Solicito validación manual visual y funcional del usuario/planner antes de marcar el hito como completado.
 
 Validación técnica realizada:
 - La sección está ubicada dentro de `#info`, antes del contenido de "Requisitos y distancias".

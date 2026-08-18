@@ -19,6 +19,8 @@ El usuario solicita añadir bajo "Requisitos y distancias" una nueva sección co
 
 El usuario solicita ampliar las clasificaciones del circuito con Adaptada 1 y Adaptada 2 de 1500 m, además de Infantil y Adaptada infantil de 500 m, integrándolas con una interfaz clara junto a los resultados globales existentes.
 
+El usuario solicita añadir el acceso a los resultados oficiales de la prueba de Almería del 22 de agosto de 2026.
+
 ## Key Challenges and Analysis
 
 ### Bugs críticos detectados
@@ -61,8 +63,19 @@ El usuario solicita ampliar las clasificaciones del circuito con Adaptada 1 y Ad
 - [ ] Enlaces y orden de tandas de Garrucha añadidos — validación técnica superada; pendiente validación manual del usuario
 - [ ] Meta y entrega de premios de Garrucha + ubicación de Almería — validación técnica superada; pendiente validación manual del usuario
 - [ ] Sistema de puntuación y centro de 6 clasificaciones de 1500/500 m — validación técnica y visual superada; pendiente validación manual del usuario
+- [ ] Resultados de Almería añadidos al card — validación técnica superada; pendiente validación manual del usuario
 
 ## Executor's Feedback or Assistance Requests
+Se ha añadido "Resultados" al card de Almería y se ha reorganizado junto a "Cómo llegar" como botonera compacta de dos columnas, siguiendo el patrón visual del calendario.
+
+Validación técnica realizada:
+- El enlace oficial de resultados responde `HTTP 200 OK`.
+- El card de Almería contiene exactamente los accesos "Resultados" y "Cómo llegar".
+- Ambos enlaces usan `target="_blank"` y `rel="noopener"`.
+- `git diff --check` no detecta errores de formato.
+
+Solicito validación manual visual y funcional del usuario/planner antes de marcar el hito como completado.
+
 La sección del sistema de puntuación aparece sobre "Requisitos y distancias". Mantiene la escala completa hasta 2 puntos, la explicación de que los 2 puntos se mantienen hasta el final, el requisito destacado de participar en al menos 2 de las 4 sedes y la indicación "Premios no acumulables". Los accesos se han reorganizado como un centro de clasificaciones con dos grupos: cuatro resultados de 1500 m y dos resultados infantiles de 500 m.
 
 Validación de la ampliación de clasificaciones:
